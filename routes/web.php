@@ -6,4 +6,4 @@ Route::get('/', function () {
     return view("index");
 });
 
-Route::get('/index', Index::class);
+// Route::get('/index', Index::class);
