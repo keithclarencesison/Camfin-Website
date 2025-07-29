@@ -3,7 +3,7 @@ use App\Livewire\Index;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view("livewire.index");
+    return view("welcome");
 });
 
-// Route::get('/index', Index::class);
+Route::get('/index', Index::class);
