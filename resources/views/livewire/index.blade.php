@@ -59,7 +59,7 @@
 
                 <div id="slide3" class="carousel-item relative w-full">
                     <img
-                    src="images/frontpage3.png"
+                    src="{{ asset('images/frontpage3.png') }}"
                     class="w-full" />
                     <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide2" class="btn btn-circle">❮</a>
