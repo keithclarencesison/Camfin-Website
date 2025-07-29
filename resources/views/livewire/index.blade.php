@@ -4,7 +4,7 @@
             <div class="navbar-start max-lg:flex-1">
                 <div class="avatar mr-3">
                     <div class="w-16 rounded max-sm:w-8">
-                        <img src="/images/camfin_logo.png" />
+                        <img src="{{ asset('images/camfin_logo.png') }}" />
                     </div>
                 </div>
                 <p class="font-bold max-sm:text-xs">Camfin <br> Lending Inc.</p>
@@ -39,9 +39,7 @@
         <div class="welcome-page w-screen flex justify-center bg-[#538FD6] my-5">
             <div class="carousel w-7xl">
                 <div id="slide1" class="carousel-item relative w-full">
-                    <img
-                    src="images/frontpage.png"
-                    class="w-full" />
+                    <img src="{{ asset('images/frontpage.png') }}" class="w-full" />
                     <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                         <a href="#slide3" class="btn btn-circle">❮</a>
                         <a href="#slide2" class="btn btn-circle">❯</a>
