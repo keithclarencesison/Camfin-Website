@@ -73,6 +73,7 @@
         
         @include('sections.loan-steps')
         @include('sections.loan-products')
+        @include('sections.client-testimonials')
     </div>
 
 </x-layouts.app>

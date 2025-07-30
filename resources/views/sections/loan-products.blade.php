@@ -1,12 +1,11 @@
-<div class="flex flex-col justify-center flex-wrap shrink">
+<div class="flex justify-center flex-wrap shrink">
 
     <div class="product-header mb-20 flex flex-col justify-center">
         <h1 class="text-center text-6xl text-[#538FD6] font-bold max-md:text-5xl max-sm:text-3xl">Our Loan Products</h1>
         <p class="text-center text-xl w-3/4 self-center max-md:text-[16px] max-sm:text-[12px]">We offer reliable and flexible financing solutions to help you achieve life’s biggest milestones with confidence and ease.</p>
     </div>
     
-
-    <div class="product-section w-full bg-gray-100">
+    <div class="product-section w-full">
         
         <div class="product1 flex flex-wrap gap-20 justify-center max-xl:gap-0 max-xl:mb-10">
 
@@ -20,7 +19,7 @@
                 <button class="btn w-1/2 self-center">Apply Now</button>
             </div>
             <div class="w-[600px] h-[400px] flex justify-center items-center max-sm:w-[300px] max-sm:h-[300px]">
-                <img src="images/loanproduct1.png" alt="Pick Up Truck and ORCR" class="w-[600px] max-xl:w-[500px] max-lg:w-[400px] max-sm:w-[90%]">
+                <img src="images/loanproduct1.png" alt="Pick Up Truck and ORCR" class="w-[450px] max-xl:w-[500px] max-lg:w-[400px] max-sm:w-[90%]">
             </div>
         </div>
 
@@ -41,7 +40,7 @@
         </div>
 
         <div class="product3 flex flex-wrap gap-20 justify-center max-xl:gap-0">
-            <div class="product3-description w-[500px] flex flex-col justify-center gap-5">
+            <div class="product3-description w-[500px] flex flex-col justify-center gap-5 max-xl:gap-2">
                 <h1 class="font-bold text-[#538FD6] text-5xl text-center max-md:text-5xl max-sm:text-4xl">Sangla Titulo</h1>
                 <p class="italic self-center text-xl font-bold text-center max-md:text-xl max-sm:text-[16px] max-sm:w-3/4">May lupa ka pero kailangan mo ng biglaang cash?</p>
                 <p class="self-center text-[14px] text-center max-md:text-sm max-sm:text-[12px] max-sm:w-3/4"> Gamitin ang land title mo bilang collateral sa aming Sangla Titulo loan. Mabilis ang proseso,
@@ -51,7 +50,7 @@
                 <button class="btn w-1/2 self-center">Apply Now</button>
             </div>
             <div class="w-[600px] h-[400px] flex justify-center items-center max-sm:h-[300px] max-sm:w-[400px]">
-                <img src="images/loanproduct3.png" alt="Pick Up Truck and ORCR" class="">
+                <img src="images/loanproduct3.png" alt="Land Title" class="">
             </div>
         </div>
 
