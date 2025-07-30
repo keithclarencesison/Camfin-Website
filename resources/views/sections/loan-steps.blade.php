@@ -1,4 +1,4 @@
-<div class="flex justify-center flex-wrap shrink my-50">
+<div class="flex justify-center flex-wrap shrink my-50 max-sm:my-20">
 
     <div class="loan-steps-container relative w-[80%] h-[700px] bg-[#D9D9D9]/40 rounded-lg max-sm:h-[600px]">
         <h1 class="text-center text-5xl font-bold text-[#538FD6] mt-10 mb-3 mx-5 max-lg:text-4xl max-md:text-3xl max-sm:text-2xl">Get Your Loan in 3 Easy Steps</h1>

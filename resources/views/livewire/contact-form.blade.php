@@ -1,4 +1,4 @@
-<div class="flex justify-center flex-wrap shrink my-60">
+<div class="flex justify-center flex-wrap shrink my-60 max-sm:my-30">
 
     <div class="w-[500px] h-[550px] p-4 bg-[rgba(83,143,214,0.25)] rounded shadow">
         @if (session()->has('success'))
