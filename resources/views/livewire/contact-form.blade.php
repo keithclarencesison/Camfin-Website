@@ -10,7 +10,7 @@
         <form wire:submit.prevent="submit">
             <div class="w-full flex flex-col justify-center flex-wrap items-center">
                 <div class="contact-header mt-3 mb-5 w-full flex">
-                    <h1 class="text-3xl font-bold ml-5 text-black/25">Contact Us Today</h1>
+                    <h1 class="text-3xl font-bold ml-5 text-black/25">Contact Us</h1>
                 </div>
 
                 <div class="mb-4 w-[85%] flex justify-center flex-col">
