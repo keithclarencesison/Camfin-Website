@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\ContactSubmission;
 use Livewire\Component;
 
 class ContactForm extends Component
@@ -34,6 +35,7 @@ class ContactForm extends Component
 
         // Here you can store to DB or send email
         // Contact::create($validated);
+        ContactSubmission::create($validated);
 
         session()->flash('success', 'Your message has been submitted!');
         $this->reset();

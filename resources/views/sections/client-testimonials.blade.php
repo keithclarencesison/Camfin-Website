@@ -2,7 +2,7 @@
     <div>
         <div class="client-header flex flex-col gap-">
             <h1 class="text-center text-[#538FD6] text-6xl font-bold">Client Testimonials</h1>
-            <p class="w-1/2 text-center self-center">“Hear from our satisfied clients who experienced fast, reliable, and transparent service — the kind of service we promise to deliver every time.”</p>
+            <p class="w-1/2 text-center self-center max-sm:w-3/4">“Hear from our satisfied clients who experienced fast, reliable, and transparent service — the kind of service we promise to deliver every time.”</p>
         </div>
         
         <div class="client-container my-40 flex flex-wrap justify-evenly gap-10">
