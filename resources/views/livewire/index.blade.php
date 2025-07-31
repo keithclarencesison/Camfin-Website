@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div>
+    <div class="overflow-x-hidden">
         <div class="navbar bg-base-100 shadow-sm">
             <div class="navbar-start max-lg:flex-1">
                 <div class="avatar mr-3">
@@ -74,6 +74,8 @@
         @include('sections.loan-steps')
         @include('sections.loan-products')
         @include('sections.client-testimonials')
+        @include('sections.help-support-center')
+        @include('sections.footer-section')
     </div>
 
 </x-layouts.app>
