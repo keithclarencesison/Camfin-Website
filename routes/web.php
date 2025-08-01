@@ -2,8 +2,12 @@
 use App\Livewire\Index;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view("welcome");
-});
+// Route::get('/', function () {
+//     return view("welcome");
+// });
 
-Route::get('/index', Index::class);
+Route::get('/', Index::class);
+
+Route::get('/about', function(){
+    return view('pages.about-us-page');
+})->name('about');
