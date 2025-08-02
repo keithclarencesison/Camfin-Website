@@ -1,6 +1,6 @@
 <div class="my-50">
     <div class="header">
-        <h1 class="text-center font-bold text-5xl max-sm:text-3xl">Our Official Logo</h1>
+        <h1 class="text-center font-bold text-5xl max-sm:text-3xl mb-10">Our Official Logo</h1>
         <p class="text-center text-2xl max-sm:text-sm">Symbols & Icons</p>
     </div>
     <div class="logo-img flex justify-center shrink max-lg:m-5">
