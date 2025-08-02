@@ -1,14 +1,15 @@
 <div class="flex flex-wrap justify-center mb-40">
-        <div class="help-support-container w-7xl flex flex-col flex-wrap shrink justify-center bg-[#D9D9D9]/30 rounded-2xl">
+        <div class="help-support-container w-7xl flex flex-col flex-wrap shrink justify-center bg-[#D9D9D9]/30 rounded-2xl m-2">
             <div class="help-support-header my-30 flex flex-col gap-3 max-lg:my-10">
-                <h1 class="text-center text-3xl font-bold text-[#538FD6] ">HELP & SUPPORT CENTER</h1>
-                <p class="text-center italic text-sm">Need quick answers? Search our FAQs,<br> guides, and loan resources anytime.</p>
+                <h1 class="text-center text-3xl font-bold text-[#538FD6] max-sm:text-xl">HELP & SUPPORT CENTER</h1>
+                <p class="text-center italic text-sm max-sm:text-[12px]">Need quick answers? Search our FAQs,<br> guides, and loan resources anytime.</p>
+                <button class="btn self-center">Learn More</button>
             </div>
 
             <div class="faqs-section flex flex-wrap justify-around shrink gap-5 mb-20">
                 <div class="faqs-header w-1/4 flex flex-col shrink gap-3 max-lg:w-full">
-                    <h1 class="text-center font-bold text-3xl">Frequently Asked Questions</h1>
-                    <p class="italic text-center w-3/4 self-center text-sm">Find quick answers to common questions about loans, application steps, payment terms, and more.</p>
+                    <h1 class="text-center font-bold text-3xl max-sm:text-xl">Frequently Asked Questions</h1>
+                    <p class="italic text-center w-3/4 self-center text-sm max-sm:text-[12px]">Find quick answers to common questions about loans, application steps, payment terms, and more.</p>
                 </div>
                 <div class="faqs-content flex flex-col w-1/2 items-center justify-center shrink max-lg:w-3/4 max-md:w-auto">
                     <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[95%]">
