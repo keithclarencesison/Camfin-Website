@@ -25,6 +25,7 @@
     </div>
     
     @include('sections.corporate-identity')
+    @include('sections.about-official-logo')
 
 
 

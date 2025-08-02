@@ -7,7 +7,7 @@
 
     <div class="mission-vision-section flex flex-wrap justify-center gap-10 my-30">
 
-        <div class="mission-section w-[500px] bg-gray-300 flex flex-wrap justify-center items-center gap-10 max-sm:w-[400px] max-sm:p-5">
+        <div class="mission-section w-[500px] bg-gray-300 flex flex-wrap justify-center items-center gap-10 max-sm:w-[400px] max-sm:p-5 shadow-lg rounded-sm">
             <div class="mission-content flex flex-col items-center w-1/2 max-sm:w-3/4">
                 <img src="images/mission-icon.png" alt="Mission Icon" class="w-[50px]">
                 <h1 class="mission-title font-bold text-3xl">Mission</h1>
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="vision-section w-[500px] bg-gray-300 flex flex-wrap justify-center gap-5 max-lg:flex-row-reverse max-sm:w-[400px] max-sm:p-5">
+        <div class="vision-section w-[500px] bg-red-300 flex flex-wrap justify-center gap-5 max-lg:flex-row-reverse max-sm:w-[400px] max-sm:p-5 shadow-lg rounded-sm">
 
             <div class="vision-content w-1/2 flex flex-col items-center justify-center max-sm:w-3/4">
                 <img src="images/vision-icon.png" alt="Vision Icon" class="w-[50px]">
