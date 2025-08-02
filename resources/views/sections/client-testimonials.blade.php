@@ -5,8 +5,8 @@
             <p class="w-1/2 text-center self-center max-sm:w-3/4">“Hear from our satisfied clients who experienced fast, reliable, and transparent service — the kind of service we promise to deliver every time.”</p>
         </div>
         
-        <div class="client-container my-40 flex flex-wrap justify-evenly gap-10">
-            <div class="card w-96 bg-[#538FD6] card-xl shadow-sm">
+        <div class="client-container my-20 flex flex-wrap justify-evenly gap-10">
+            <div class="card w-96 bg-[#538FD6]/80 card-xl shadow-sm">
                 <div class="card-body">
                     <img src="images/quote.png" alt="" class="w-10">
                     <p>10/10 for me. They’re professional in handling my account. They are friendly, transparent, honest and kind.
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="card w-96 bg-[#538FD6] card-xl shadow-sm">
+            <div class="card w-96 bg-[#538FD6]/80 card-xl shadow-sm">
                 <div class="card-body">
                     <img src="images/quote.png" alt="" class="w-10">
                     <p>Minimal ang requirements, mabilis ang proseso, at sobrang approachable ng mga staff.

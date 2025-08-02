@@ -6,7 +6,6 @@
         
         @include('sections.loan-steps')
         @include('sections.loan-products')
-        @include('sections.client-testimonials')
         @include('sections.help-support-center')
         @include('sections.footer-section')
     </div>

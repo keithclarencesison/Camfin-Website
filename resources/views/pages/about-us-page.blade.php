@@ -25,7 +25,11 @@
     </div>
     
     @include('sections.corporate-identity')
+    @include('sections.core-values')
     @include('sections.about-official-logo')
+    @include('sections.client-testimonials')
+
+    @include('sections.footer-section')
 
 
 

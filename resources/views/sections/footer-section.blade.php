@@ -2,7 +2,9 @@
     <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
         <aside>
             <div class="flex justify-center items-center gap-3">
-                <img src="images/camfin_logo.png" alt="" class="w-[100px] h-[100px]">
+                <a href="{{ url('/', [], false) }}">
+                    <img src="images/camfin_logo.png" alt="" class="w-[100px] h-[100px]">
+                </a>
                 <p class="font-bold text-lg ">Camfin <br> Lending Inc.</p>
             </div>
             
