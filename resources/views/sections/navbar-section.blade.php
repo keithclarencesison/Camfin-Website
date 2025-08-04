@@ -14,8 +14,8 @@
     <div class="navbar-center max-lg:hidden">
         <ul class="menu menu-horizontal gap-5">
             <li><a href="{{ route('about', [], false) }}">About</a></li>
-            <li><a>Loan Services</a></li>
-            <li><a>Branches</a></li>
+            <li><a href="/#help-support">Loan Services</a></li>
+            <li><a href="{{ route('branches', [], false) }}">Branches</a></li>
             <li><a>Blog</a></li>
             <li><a>Contact</a></li>
             <li><a>Assets</a></li>
@@ -32,7 +32,7 @@
         </div>
         <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
             <li><a href="{{ route('about', [], false) }}">About</a></li>
-            <li><a>Item 2</a></li>
+            <li><a href="{{ url('/') }}">Help & Support</a></li>
         </ul>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-center mb-40">
+<div id="help-support" class="flex flex-wrap justify-center my-40">
         <div class="help-support-container w-7xl flex flex-col flex-wrap shrink justify-center bg-[#D9D9D9]/30 rounded-2xl m-2">
             <div class="help-support-header my-30 flex flex-col gap-3 max-lg:my-10">
                 <h1 class="text-center text-3xl font-bold text-[#538FD6] max-sm:text-xl">HELP & SUPPORT CENTER</h1>

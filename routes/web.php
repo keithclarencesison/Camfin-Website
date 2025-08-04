@@ -11,3 +11,7 @@ Route::get('/', Index::class);
 Route::get('/about', function(){
     return view('pages.about-us-page');
 })->name('about');
+
+Route::get('/branches', function(){
+    return view('pages.branches');
+})->name('branches');
