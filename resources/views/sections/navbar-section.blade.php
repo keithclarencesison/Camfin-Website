@@ -3,7 +3,7 @@
         <div class="avatar mr-3">
             <a href="{{ url('/', [], false) }}">
                 <div class="w-16 rounded max-sm:w-8">
-                    <img src="images/camfin_logo.png" />
+                    <img src="/images/camfin_logo.png" />
                 </div>
             </a>
             
@@ -15,7 +15,7 @@
         <ul class="menu menu-horizontal gap-5">
             <li><a href="{{ route('about', [], false) }}">About</a></li>
             <li><a href="/#help-support">Loan Services</a></li>
-            <li><a href="{{ route('branches', [], false) }}">Branches</a></li>
+            <li><a href="{{ route('branches.show', ['branch' => 'head-office'], false) }}">Branches</a></li>
             <li><a>Blog</a></li>
             <li><a>Contact</a></li>
             <li><a>Assets</a></li>

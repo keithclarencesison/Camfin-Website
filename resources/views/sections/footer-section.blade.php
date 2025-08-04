@@ -3,7 +3,7 @@
         <aside>
             <div class="flex justify-center items-center gap-3">
                 <a href="{{ url('/', [], false) }}">
-                    <img src="images/camfin_logo.png" alt="" class="w-[100px] h-[100px]">
+                    <img src="/images/camfin_logo.png" alt="" class="w-[100px] h-[100px]">
                 </a>
                 <p class="font-bold text-lg ">Camfin <br> Lending Inc.</p>
             </div>
@@ -26,9 +26,9 @@
         </nav>
         <nav>
             <h6 class="footer-title">Branches</h6>
-            <a class="link link-hover">Urdaneta</a>
-            <a class="link link-hover">Calasiao</a>
-            <a class="link link-hover">San Carlos</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'head-office'], false) }}">Head Office</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'calasiao'], false) }}">Calasiao</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'urdaneta'], false) }}">San Carlos</a>
             <a class="link link-hover">La Trinidad</a>
             <a class="link link-hover">Isabela</a>
             <a class="link link-hover">Tarlac</a>

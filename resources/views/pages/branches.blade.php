@@ -5,7 +5,7 @@
 
     <div class="branches-container flex flex-wrap justify-around">
         <div class="branches-info flex flex-col m-5">
-            <h1 class="text-center text-5xl font-bold">Head Office</h1>
+            <h1 class="text-center text-5xl font-bold">{{ $branchData['name'] }}</h1>
             <br>
             <h1 class="text-3xl font-bold">Where To Find Us</h1>
             <p>📍<span class="italic text-[#538FD6] hover:underline"><a href="https://maps.app.goo.gl/NRMEfNMDTtPhAgJe9">Business Address:  2nd Floor Azure Business Center, 1197 EDSA,<br> Munoz, Quezon City, Metro Manila, Philippines</a></span></p>
@@ -36,11 +36,11 @@
         </div>
 
         <div class="flex flex-col gap-10 mb-20 max-xl:my-20">
-            <img src="images/map-direction.png" alt="" class="">
+            <img src="/images/map-direction.png" alt="" class="">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9754644390364!2d121.01557911187741!3d14.657333885776685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b6ee2f6581e9%3A0x3425b59a3e17bae3!2sAncar%20Motors%2C%20Inc.!5e0!3m2!1sen!2sph!4v1754278809877!5m2!1sen!2sph"
                 width="500" 
                 height="300" 
-                style="border:0;" 
+                style="border:3px solid;" 
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade">
