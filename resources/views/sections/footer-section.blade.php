@@ -29,9 +29,10 @@
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'head-office'], false) }}">Head Office</a>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'calasiao'], false) }}">Calasiao</a>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'urdaneta'], false) }}">San Carlos</a>
-            <a class="link link-hover">La Trinidad</a>
-            <a class="link link-hover">Isabela</a>
-            <a class="link link-hover">Tarlac</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'san-carlos'], false) }}">San Carlos</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'la-trinidad'], false) }}">La Trinidad</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'isabela'], false) }}">Isabela</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'tarlac'], false) }}">Tarlac</a>
         </nav>
         <nav class="">
             <h1 class="font-bold text-3xl text-[#538FD6]">STAY IN TOUCH</h1>
