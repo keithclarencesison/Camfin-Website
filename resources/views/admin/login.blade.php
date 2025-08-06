@@ -1,6 +1,4 @@
 <x-layouts.app>
-    <h2>Admin Login</h2>
-
     @if ($errors->any())
         <div style="color:red;">
             <ul>
@@ -11,10 +9,79 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.login.submit', [], false) }}">
-        @csrf
-        <input type="email" name="email" placeholder="Email" required class="p-10"><br><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
+    <div class="flex w-full h-screen shrink max-lg:flex-col">
+
+        <div class="toast toast-top toast-start z-10">
+            <div class="alert alert-info">
+                <span>New mail arrived.</span>
+            </div>
+        </div>
+
+        <div class="w-3/5 max-xl:w-1/2 h-full bg-blue-300/30 relative max-lg:w-full max-lg:h-1/3">
+            <div class="admin-header flex flex-col justify-center items-center max-lg:flex-row">
+                <img src="/images/camfin_logo.png" alt="" class="ml-auto mr-auto my-10 max-lg:w-[200px] max-lg:m-0">
+                <h1 class="text-4xl font-bold text-center max-xl:text-3xl max-lg:text-2xl max-sm:hidden">Ka-Camfin mo sa Pag-Asenso</h1>
+            </div>
+            <footer class="footer sm:footer-horizontal footer-center text-base-content bottom-1 absolute">
+                <aside>
+                    <p class="font-bold max-lg:hidden">Copyright © - All right reserved by Camfin Lending Inc.</p>
+                </aside>
+            </footer>
+        </div>
+
+        <div class="w-2/5 max-xl:w-1/2 max-lg:h-2/2 max-lg:w-full shrink">
+            <form method="POST" action="{{ route('admin.login.submit', [], false) }}" class="w-full h-full flex justify-center items-center">
+                @csrf
+                    
+                    <div class="form-container bg-base-200/50 w-[500px] h-[600px] rounded-2xl flex flex-col justify-center max-lg:h-[500px] max-md:mx-5 max-sm:h-[400px]">
+                        <img src="/images/camfin-logo.png" alt="" class="w-[200px] self-center max-sm:w-[100px]">
+                        <p class="text-center font-bold mt-5">Login as a Admin User</p>
+                        <label class="input validator self-center my-5 max-sm:w-3/4">
+                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5"fill="none"stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></g></svg>
+                            <input type="email" name="email" required placeholder="Email" minlength="3" maxlength="30" title="Only letters, numbers or dash" class=""/>
+                            </label>
+                            <!-- <p class="validator-hint text-center hidden">
+                            Must be 3 to 30 characters
+                            <br />containing only letters, numbers or dash
+                            </p> -->
+                                
+                        <label class="input validator self-center max-sm:w-3/4">
+                            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <g
+                                stroke-linejoin="round"
+                                stroke-linecap="round"
+                                stroke-width="2.5"
+                                fill="none"
+                                stroke="currentColor"
+                                >
+                                <path
+                                    d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+                                ></path>
+                                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                                </g>
+                            </svg>
+                            <input
+                                type="password"
+                                name="password"
+                                required
+                                placeholder="Password"
+                                title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+                            />
+                        </label>
+                        <!-- <p class="validator-hint hidden text-center">
+                        Must be more than 8 characters, including
+                        <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
+                        </p> -->
+                        <br>
+                        <button class="btn btn-info self-center" type="submit">Login</button>
+                    </div>
+                    <footer class="footer sm:footer-horizontal footer-center text-base-content bottom-1 absolute">
+                        <aside>
+                            <p class="font-bold lg:hidden max-sm:text-[10px]">Copyright © - All right reserved by Camfin Lending Inc.</p>
+                        </aside>
+                    </footer>
+            </form>
+        </div>
+    </div>
+
 </x-layouts.app>
