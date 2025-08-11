@@ -13,18 +13,21 @@
 
         <div class="toast toast-top toast-start z-10">
             <div class="alert alert-info">
-                <span>New mail arrived.</span>
+                <span>Welcome Admin!</span>
             </div>
         </div>
 
         <div class="w-3/5 max-xl:w-1/2 h-full bg-blue-300/30 relative max-lg:w-full max-lg:h-1/3">
-            <div class="admin-header flex flex-col justify-center items-center max-lg:flex-row">
-                <img src="/images/camfin_logo.png" alt="" class="ml-auto mr-auto my-10 max-lg:w-[200px] max-lg:m-0">
-                <h1 class="text-4xl font-bold text-center max-xl:text-3xl max-lg:text-2xl max-sm:hidden">Ka-Camfin mo sa Pag-Asenso</h1>
+            <div class="admin-header h-full flex flex-col items-center max-lg:flex-row sm:justify-center max-sm:justify-center">
+                <div class="admin-photo flex my-20 flex-wrap items-center justify-center xl:my-0 xl:m-0 lg:m-0 max-sm:m-0">
+                    <img src="/images/camfin_logo.png" alt="Camfin Logo" class="xl:size-[380px] ml-auto mr-auto my-10 sm:m-0 lg:size-[300px] md:size-[250px] sm:size-[150px] max-sm:size-[150px] max-sm:m-0">
+                    <img src="/images/admin-picture.png" alt="Illustrated Admin" class="xl:size-[380px] lg:size-[300px] md:size-[250px] sm:size-[150px] max-sm:size-[150px]">
+                </div>
+                <h1 class="text-4xl font-bold text-center max-xl:text-3xl max-lg:hidden max-sm:hidden mx-5">Ka-<span class="text-[#0DA949]">Camfin</span> mo sa Pag-Asenso</h1>
             </div>
             <footer class="footer sm:footer-horizontal footer-center text-base-content bottom-1 absolute">
                 <aside>
-                    <p class="font-bold max-lg:hidden">Copyright © - All right reserved by Camfin Lending Inc.</p>
+                    <p class="font-bold max-lg:hidden">Copyright © - All right reserved by <span class="text-[#0DA949]">Camfin Lending Inc.</span></p>
                 </aside>
             </footer>
         </div>
@@ -74,6 +77,7 @@
                         </p> -->
                         <br>
                         <button class="btn btn-info self-center" type="submit">Login</button>
+                        <a class="link link-hover text-[14px] text-[#538FD6] self-center mt-5">Forgot Password?</a>
                     </div>
                     <footer class="footer sm:footer-horizontal footer-center text-base-content bottom-1 absolute">
                         <aside>

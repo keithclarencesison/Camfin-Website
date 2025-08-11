@@ -13,7 +13,7 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1 gap-10">
         <li><a href="{{ route('about', [], false) }}">About</a></li>
-        <li><a href="/#help-support">Loan Services</a></li>
+        <li><a href="{{ route('loan-services', [], false) }}">Loan Services</a></li>
         <li>
             <details>
             <summary>Branches</summary>
@@ -29,7 +29,7 @@
             </details>
         </li>
         <li><a>Blog</a></li>
-        <li><a>Contact</a></li>
+        <li><a href="/#help-support">Help & Support</a></li>
         <li><a>Assets</a></li>
     </ul>
   </div>
@@ -44,7 +44,7 @@
                 tabindex="0"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li><a href="{{ route('about', [], false) }}">About</a></li>
-                <li><a href="/#help-support">Loan Services</a></li>
+                <li><a href="/#loan-products-section">Loan Services</a></li>
                 <li>
                     <details>
                     <summary>Branches</summary>
@@ -60,7 +60,7 @@
                     </details>
                 </li>
                 <li><a>Blog</a></li>
-                <li><a>Contact</a></li>
+                <li><a href="/#help-support">Help & Support</a></li>
                 <li><a>Assets</a></li>
             </ul>
         </div>

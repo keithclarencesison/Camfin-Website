@@ -1,4 +1,4 @@
-<div class="welcome-page w-screen flex justify-center bg-[#538FD6] my-5">
+<div class="welcome-page w-screen flex justify-center bg-[#538FD6]/30 my-5">
     <div class="carousel w-7xl">
         <div id="slide1" class="carousel-item relative w-full">
             <img src="images/frontpage.png" class="w-full" />

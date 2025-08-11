@@ -2,10 +2,11 @@
     <div class="overflow-x-hidden">
         @include('sections.navbar-section')
         @include('sections.welcome-carousel-page')
-        <livewire:contact-form />
-        
+
         @include('sections.loan-steps')
         @include('sections.loan-products')
+        
+        <livewire:contact-form />
         @include('sections.help-support-center')
         @include('sections.footer-section')
     </div>

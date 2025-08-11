@@ -23,10 +23,10 @@
                     <div class="w-[50%]">
                         <label class="block font-bold">Applying For</label>
                         <select wire:model.lazy="applying_for" class="w-full bg-white drop-shadow-lg rounded-[10px] p-2">
-                            <option value="">Select Position</option>
-                            <option value="Real Estate">Real Estate</option>
-                            <option value="Car Financing">Car Financing</option>
-                            <option value="Truck Financing">Truck Financing</option>
+                            <option value="">Select an Option</option>
+                            <option value="Agent">Agent</option>
+                            <option value="Loan Applicant">Loan Applicant</option>
+                            <option value="Asset Inquiry">Asset Inquiry</option>
                         </select>
                         @error('applying_for') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
@@ -55,9 +55,15 @@
     </div>
 
     <div class="w-[500px] h-[550px] rounded shadow relative bg-[#538FD6]">
-        <div class="w-[280px] h-[300px] absolute top-10 right-0 max-sm:hidden">
+        <!-- <div class="w-[280px] h-[300px] absolute top-10 right-0 max-sm:hidden">
             <img src="images/sirMJ.png" alt="Sir MJ">
-        </div>
+        </div> -->
+
+        <label class="swap swap-flip absolute top-10 right-1 max-sm:hidden">
+                <input type="checkbox" />
+                <div class="swap-on w-[280px]"><img src="images/sirMJ.png" alt="Sir MJ"></div>
+                <div class="swap-off w-[280px] mt-2"><img src="images/ken.png" alt="" class=" "></div>
+        </label>
         
         <div class="w-1/2 h-full flex flex-col justify-between shrink max-sm:items-center max-sm:w-full max-sm:justify-center">
             <div class="ml-5 mt-5 max-sm:w-3/4 max-sm: mb-5">

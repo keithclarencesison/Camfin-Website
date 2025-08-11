@@ -27,8 +27,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard', function () {
-        return view('admin.dashboard'); // ✅ This will render your Blade view
+        Route::get('/dashboard/index', function () {
+        return view('admin.dashboard.index'); // ✅ This will render your Blade view
         })->name('admin.dashboard');
     });
 });
@@ -37,5 +37,9 @@ Route::prefix('admin')->group(function () {
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');  
 
 Route::get('/test', function () {
-    return 'Laravel is working';
-});
+    return view('admin.test');
+})->name('test');
+
+Route::get('/loan-services', function () {
+    return view('pages.loan-services');
+})->name('loan-services');
