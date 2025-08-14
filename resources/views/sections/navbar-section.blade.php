@@ -3,7 +3,7 @@
     <div class="avatar mr-3">
         <a href="{{ url('/', [], false) }}">
             <div class="w-16 rounded max-sm:w-8">
-                <img src="/images/camfin_logo.png" />
+                <img src="/images/camfin-logo/camfin_logo.png" />
             </div>
         </a>
     </div>
@@ -28,7 +28,7 @@
             </ul>
             </details>
         </li>
-        <li><a>Blog</a></li>
+        <li><a href="{{ route('blog.index') }}">Blog</a></li>
         <li><a href="/#help-support">Help & Support</a></li>
         <li><a>Assets</a></li>
     </ul>

@@ -76,11 +76,11 @@
             </div>
             <div class="flex justify-center flex-col items-center">
                 <h1 class="text-xl text-white font-bold">Connect with Us</h1>
-                <div class="social-media-icons flex">
-                    <a href="" class="size-[40px]"><img src="images/facebook.png" alt="facebook"></a>
-                    <a href="" class="size-[40px]"><img src="images/instagram.png" alt="Instagram"></a>
-                    <a href="" class="size-[40px]"><img src="images/tiktok.png" alt="TikTok"></a>
-                    <a href="" class="size-[40px]"><img src="images/youtube.png" alt="Youtube"></a>
+                <div class="social-media-icons flex gap-2 mb-3">
+                    <a href="" class="size-[40px]"><img src="images/social-media-icons/facebook-icon.png" alt="facebook"></a>
+                    <a href="" class="size-[40px]"><img src="images/social-media-icons/instagram-icon.png" alt="Instagram"></a>
+                    <a href="" class="size-[40px]"><img src="images/social-media-icons/tiktok-icon.png" alt="TikTok"></a>
+                    <a href="" class="size-[40px]"><img src="images/social-media-icons/youtube-icon.png" alt="Youtube"></a>
                 </div>
                 
             </div>

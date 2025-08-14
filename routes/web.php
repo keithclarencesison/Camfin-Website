@@ -2,8 +2,11 @@
 use App\Livewire\Index;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Blog;
+use App\Http\Controllers\BlogPageController;
+
 // Route::get('/', function () {
 //     return view("welcome");
 // });
@@ -14,22 +17,25 @@ Route::get('/about', function(){
     return view('pages.about-us-page');
 })->name('about');
 
-// Route::get('/branches', function(){
-//     return view('pages.branches');
-// })->name('branches');
 
 Route::get('/branches/{branch}', [BranchController::class, 'show'])->name('branches.show');
 
+Route::get('/blog', [BlogPageController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show');
+
 //ADMIN
-Route::prefix('admin')->group(function () {
-    Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
-    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submit');
+    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard/index', function () {
-        return view('admin.dashboard.index'); // ✅ This will render your Blade view
-        })->name('admin.dashboard');
+        Route::get('/dashboard/index', function (\Illuminate\Http\Request $request) {
+            $blogs = Blog::latest()->paginate(10)->appends(['tab' => 'blog']);
+            return view('admin.dashboard.index', compact('blogs')); // ✅ This will render your Blade view    
+        })->name('dashboard');
+
+        Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
     });
 });
 

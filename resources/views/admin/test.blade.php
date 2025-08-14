@@ -1,42 +1,61 @@
 <x-layouts.app>
-<div class="flex">
-    <!-- Sidebar Tabs -->
-    <div id="sidebar-tabs" class="tabs tabs-vertical w-64 bg-gray-200 p-4">
-        <button data-tab="dashboard" class="tab tab-lifted tab-active">Dashboard</button>
-        <button data-tab="tab2" class="tab tab-lifted">Tab 2</button>
-        <button data-tab="tab3" class="tab tab-lifted">Tab 3</button>
+
+    <div class="navbar bg-gray-200 border-b-1 border-gray-400 shadow-sm">
+        <div class="flex-1">
+            <h1 class="text-4xl font-bold">Blog</h1>
+        </div>
+        <div class="flex-none">
+            <a href="{{ route('admin.blog.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                + New Post
+            </a>
+        </div>
     </div>
 
-    <!-- Content Area -->
-    <div class="flex-1 p-6">
-        <div id="dashboard" class="tab-panel w-screen">Welcome to Dashboard!</div>
-        <div id="tab2" class="tab-panel hidden">This is Tab 2 content.</div>
-        <div id="tab3" class="tab-panel hidden">This is Tab 3 content.</div>
+    @if(session('success'))
+        <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <div class="w-full flex flex-col justify-center">
+        <table class="w-3/4 mt-20 self-center border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="border border-gray-300 p-2 text-left">Title</th>
+                    <th class="border border-gray-300 p-2 text-left">Created At</th>
+                    <th class="border border-gray-300 p-2 text-left">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($blogs as $blog)
+                    <tr>
+                        <td class="border border-gray-300 p-2">{{ $blog->title }}</td>
+                        <td class="border border-gray-300 p-2">{{ $blog->created_at->format('M d, Y') }}</td>
+                        <td class="border border-gray-300 p-2">
+                            <a href="{{ route('admin.blog.edit', $blog->id) }}" class="text-blue-600 hover:underline mr-2">Edit</a>
+
+                            <form action="{{ route('admin.blog.destroy', $blog->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3" class="border border-gray-300 p-4 text-center">No blog posts found.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+
+        <div class="self-center mt-4 w-3/4">
+            {{ $blogs->links() }} {{-- Laravel pagination links --}}
+        </div>
     </div>
-</div>
+    
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const tabs = document.querySelectorAll('#sidebar-tabs .tab');
-    const panels = document.querySelectorAll('.tab-panel');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('tab-active'));
-
-            // Hide all panels
-            panels.forEach(p => p.classList.add('hidden'));
-
-            // Activate clicked tab
-            tab.classList.add('tab-active');
-
-            // Show the matching panel
-            document.getElementById(tab.dataset.tab).classList.remove('hidden');
-        });
-    });
-});
-</script>
+    
 
 
 </x-layouts.app>

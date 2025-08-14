@@ -8,8 +8,8 @@
     <div class="w-full flex flex-wrap justify-center my-20 gap-15">
 
         <div class="card w-96 bg-[#538FD6]/20 card-lg shadow-sm mx-5">
-            <div class="bg-gray-100 rounded-full m-auto my-10 p-8">
-                <img src="/images/sanglaorcr-icon.png" alt="" class="w-24">
+            <div class="bg-gray-100 rounded-full m-auto my-10 p-6">
+                <img src="/images/loan-services-section/sanglaorcr-icon.png" alt="" class="w-24">
             </div>
             <div class="card-body">
                 <h2 class="card-title">Sangla OR/CR</h2>
@@ -21,8 +21,8 @@
         </div>
 
         <div class="card w-96 bg-[#538FD6]/20 card-lg shadow-sm mx-5">
-            <div class="bg-gray-100 rounded-full m-auto my-10 p-8">
-                <img src="/images/truck-icon.png" alt="" class="w-24">
+            <div class="bg-gray-100 rounded-full m-auto my-10 p-6">
+                <img src="/images/loan-services-section/truck-icon.png" alt="" class="w-24">
             </div>            
             <div class="card-body">
                 <h2 class="card-title">Second Hand Car/Truck Purchase</h2>
@@ -34,8 +34,8 @@
         </div>
 
         <div class="card w-96 bg-[#538FD6]/20 card-lg shadow-sm mx-5">
-            <div class="bg-gray-100 rounded-full m-auto my-10 p-8">
-                <img src="/images/sanglatitulo-icon.png" alt="" class="w-24">
+            <div class="bg-gray-100 rounded-full m-auto my-10 p-6">
+                <img src="/images/loan-services-section/sanglatitulo-icon.png" alt="" class="w-24">
             </div>            
             <div class="card-body">
                 <h2 class="card-title">Sangla Titulo</h2>

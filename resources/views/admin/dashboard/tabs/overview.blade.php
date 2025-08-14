@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center">
-    <div class="stats shadow">
+    <div class="stats shadow w-1/2">
         <div class="stat">
             <div class="stat-figure text-primary">
             <svg

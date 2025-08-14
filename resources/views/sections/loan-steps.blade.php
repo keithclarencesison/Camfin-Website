@@ -17,17 +17,17 @@
             <div class="loan-icons flex justify-center mb-5 max-md:basis-1/2">
                 <div class="loan-icons-content flex justify-between max-md:flex-col">
                     <div class="loan-icons-1 flex flex-col items-center">
-                        <img src="images/applynow.png" alt="Apply Icon" class="size-[100px] mb-5 max-md:size-[50px] max-sm:size-[40px] max-sm:m-2">
+                        <img src="images/loan-steps/applynow.png" alt="Apply Icon" class="size-[100px] mb-5 max-md:size-[50px] max-sm:size-[40px] max-sm:m-2">
                         <p class="w-1/2 max-md:text-sm max-md:w-3/4 max-sm:text-[10px]">We’ve made borrowing easier, faster, and more convenient for you.</p>
                     </div>
 
                     <div class="loan-icons-2 flex flex-col items-center">
-                        <img src="images/approved.png" alt="Approved Icon" class="size-[100px] mb-5 max-md:size-[50px] max-sm:size-[40px] max-sm:m-2">
+                        <img src="images/loan-steps/approved.png" alt="Approved Icon" class="size-[100px] mb-5 max-md:size-[50px] max-sm:size-[40px] max-sm:m-2">
                         <p class="w-1/2 max-md:text-sm max-md:w-3/4 max-sm:text-[10px]">We’ll review your info and give you a quick decision—no long waiting.</p>
                     </div>
 
                     <div class="loan-icons-3 flex flex-col items-center">
-                        <img src="images/pesosign.png" alt="Peso Sign Icon" class="size-[100px] mb-5 max-md:size-[50px] max-sm:size-[40px] max-sm:m-2">
+                        <img src="images/loan-steps/pesosign.png" alt="Peso Sign Icon" class="size-[100px] mb-5 max-md:size-[50px] max-sm:size-[40px] max-sm:m-2">
                         <p class="w-1/2 max-md:text-sm max-md:w-3/4 max-sm:text-[10px]">Once approved, get your money directly to your bank—fast and easy.</p>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
         <aside>
             <div class="flex justify-center items-center gap-3">
                 <a href="{{ url('/', [], false) }}">
-                    <img src="/images/camfin_logo.png" alt="" class="w-[100px] h-[100px]">
+                    <img src="/images/camfin-logo/camfin_logo.png" alt="" class="w-[100px] h-[100px]">
                 </a>
                 <p class="font-bold text-lg ">Camfin <br> Lending Inc.</p>
             </div>

@@ -13,7 +13,7 @@
             <div class="product1 flex flex-wrap justify-center max-xl:gap-10">
 
                 <div class="product1-description w-[700px] flex flex-col justify-center m-5">
-                    <img src="images/sangla-orcr.png" alt="Pick Up Truck and ORCR" class="w-[600px] self-center rounded-2xl">
+                    <img src="images/loan-services-page/sangla-orcr.png" alt="Pick Up Truck and ORCR" class="w-[600px] self-center rounded-2xl">
                 </div>
 
                 
@@ -87,14 +87,14 @@
                 </div>
 
                 <div class="w-[700px] flex justify-center m-5">
-                    <img src="images/truck-purchase.png" alt="Pick Up Truck and ORCR" class="w-[600px] self-center rounded-2xl">
+                    <img src="images/loan-services-page/truck-purchase.png" alt="Pick Up Truck and ORCR" class="w-[600px] self-center rounded-2xl">
                 </div>
             </div>
 
             <div class="product3 flex flex-wrap justify-center">
 
                 <div class="w-[700px] flex justify-center m-5">
-                    <img src="images/sangla-titulo.png" alt="Land Title" class="self-center w-[600px] rounded-2xl">
+                    <img src="images/loan-services-page/sangla-titulo.png" alt="Land Title" class="self-center w-[600px] rounded-2xl">
                 </div>
 
                 <div class="card w-96 bg-[#538FD6]/30 shadow-sm mx-5">

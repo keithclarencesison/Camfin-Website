@@ -16,17 +16,17 @@
                     <div class="client-info flex gap-3 mt-10">
                         <div class="avatar">
                             <div class="w-24 rounded-full">
-                                <img src="images/letty.jpg" class="w-24 rounded-full"/>
+                                <img src="images/client-testimonial/letty.jpg" class="w-24 rounded-full"/>
                             </div>
                         </div>
                         <div class="client-rating">
                             <p class="font-bold mt-5">Ms. Letty</p>
                             <div class="star-rating flex">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
                             </div>
                         </div>
                     </div>
@@ -44,17 +44,17 @@
                     <div class="client-info flex gap-3 mt-10">
                         <div class="avatar">
                             <div class="w-24 rounded-full">
-                                <img src="images/marilyn.jpg" class="w-24 rounded-full"/>
+                                <img src="images/client-testimonial/marilyn.jpg" class="w-24 rounded-full"/>
                             </div>
                         </div>
                         <div class="client-rating">
                             <p class="font-bold mt-5">Ms. Marilyn Atregenio</p>
                             <div class="star-rating flex">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
-                                <img src="images/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
+                                <img src="images/client-testimonial/star.png" alt="" class="w-10">
                             </div>
                         </div>
                     </div>

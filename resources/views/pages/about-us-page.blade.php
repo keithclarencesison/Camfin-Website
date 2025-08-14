@@ -11,7 +11,7 @@
         </div>
 
         <div class=" w-[600px] mt-10">
-            <img src="images/about-us-group.png" alt="" class="top-0 left-0">
+            <img src="images/about-us-page/about-us-group.png" alt="" class="top-0 left-0">
         </div>
     </div>
 
