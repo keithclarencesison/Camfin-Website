@@ -30,7 +30,7 @@
         </li>
         <li><a href="{{ route('blog.index') }}">Blog</a></li>
         <li><a href="/#help-support">Help & Support</a></li>
-        <li><a>Assets</a></li>
+        <li><a href="{{ route('assets.index') }}">Assets</a></li>
     </ul>
   </div>
 

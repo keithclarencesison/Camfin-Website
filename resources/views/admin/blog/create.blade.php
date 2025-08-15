@@ -22,7 +22,7 @@
             type="text"
             name="title"
             id="title"
-            class="w-full border border-gray-300 p-2 rounded"
+            class="w-full border border-gray-300 bg-white p-2 rounded"
             value="{{ old('title') }}"
             required
           />
@@ -30,7 +30,7 @@
 
         <div class="mb-4">
           <label for="author" class="block text-sm font-semibold">Author</label>
-          <input type="text" name="author" id="author" class="mt-1 border block w-full border-gray-300 rounded p-2" required>
+          <input type="text" name="author" id="author" class="mt-1 bg-white border block w-full border-gray-300 rounded p-2" required>
         </div>
 
         <div class="mb-4">
@@ -39,15 +39,14 @@
             name="content"
             id="content"
             rows="6"
-            class="w-full border border-gray-300 p-2 rounded"
+            class="w-full border border-gray-300 bg-white p-2 rounded"
             required
           >{{ old('content') }}</textarea>
         </div>
 
         <div class="mb-4">
           <label for="image" class="block mb-1 font-semibold">Header Image: </label>
-          <input type="file" name="image" id="image" accept="image/*" class="file-input file-input-info" />
-
+          <input type="file" name="image" id="image" accept="image/*" class="file-input file-input-info bg-white" />
         </div>
 
         <button

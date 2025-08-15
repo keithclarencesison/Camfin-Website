@@ -37,13 +37,22 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'author' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+
+        $imagePath = null;
+
+        if($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('blogs', 'public');
+        }
 
         Blog::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'content' => $request->input('content'),
             'author' => $request->author,
+            'image' => $imagePath,
         ]);
 
         return redirect()->route('admin.dashboard', ['tab' => 'blog'])->with('success', 'Blog post created successfully!');

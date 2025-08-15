@@ -62,7 +62,7 @@
         <label class="swap swap-flip absolute top-10 right-1 max-sm:hidden">
                 <input type="checkbox" />
                 <div class="swap-on w-[280px]"><img src="images/sirMJ.png" alt="Sir MJ"></div>
-                <div class="swap-off w-[280px] mt-2"><img src="images/ken.png" alt="" class=" "></div>
+                <div class="swap-off w-[350px]"><img src="images/sirMj2.png" alt="" class="h-[500px]"></div>
         </label>
         
         <div class="w-1/2 h-full flex flex-col justify-between shrink max-sm:items-center max-sm:w-full max-sm:justify-center">

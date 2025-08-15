@@ -5,7 +5,9 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Blog;
+use App\Models\Vehicle;
 use App\Http\Controllers\BlogPageController;
+use App\Http\Controllers\AssetPageController;
 
 // Route::get('/', function () {
 //     return view("welcome");
@@ -23,6 +25,9 @@ Route::get('/branches/{branch}', [BranchController::class, 'show'])->name('branc
 Route::get('/blog', [BlogPageController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show');
 
+Route::get('/assets', [AssetPageController::class, 'index'])->name('assets.index');
+Route::get('/assets/{id}', [AssetPageController::class, 'show'])->name('assets.show');
+
 //ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -31,11 +36,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard/index', function (\Illuminate\Http\Request $request) {
+
             $blogs = Blog::latest()->paginate(10)->appends(['tab' => 'blog']);
-            return view('admin.dashboard.index', compact('blogs')); // ✅ This will render your Blade view    
+
+            $vehicles = Vehicle::latest()->paginate(10)->appends(['tab' => 'vehicles']);
+
+            return view('admin.dashboard.index', compact('blogs', 'vehicles')); // ✅ This will render your Blade view    
         })->name('dashboard');
 
         Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
+
+        Route::resource('vehicles', App\Http\Controllers\Admin\VehicleController::class);
     });
 });
 

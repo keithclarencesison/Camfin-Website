@@ -24,7 +24,13 @@
                                 </div>
                                 <span class="sidebar-tab text-xl font-bold w-1/2">Blog</span>
                             </a>
-                            <a role="tab" class="tab p-0 hover:bg-white">Settings</a>
+
+                            <a role="tab" data-tab="asset" class="tab p-0 hover:bg-white" data-tip="Foreclosed Asset">
+                                <div class="">
+                                    <img src="" alt="">
+                                </div>
+                                <span class="sidebar-tab w-1/2 text-xl font-bold">Asset</span>
+                            </a>
                         </div>
                     </div>
 
@@ -59,7 +65,14 @@
             <div class="w-full">
                 <div id="dashboard" class="tab-panel">@include('admin.dashboard.tabs.overview')</div>
 
-                <div id="blog" class="tab-panel hidden w-full transition-all duration-500">@include('admin.blog.index')</div>
+                <div id="blog" class="tab-panel hidden w-full transition-all duration-500">
+                    @include('admin.blog.index')
+                </div>
+
+                <div id="asset" class="tab-panel hidden w-full transition-all duration-500">
+                    @include('admin.vehicles.index')
+                </div>
+
             </div>
                 
         </div>

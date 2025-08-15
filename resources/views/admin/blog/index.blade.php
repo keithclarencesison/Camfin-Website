@@ -42,13 +42,26 @@
                             <td class="p-2">{{ $blog->title }}</td>
                             <td class="p-2">{{ $blog->author }}</td>
                             <td class="p-2">{{ $blog->created_at->format('M d, Y') }}</td>
-                            <td class="text-center">
-                                <a href="{{ route('admin.blog.edit', $blog->id) }}" class="text-blue-600 hover:underline mr-2">Edit</a>
+                            <td class="flex">
+                                <a href="{{ route('admin.blog.edit', $blog->id) }}" class="text-blue-600 hover:underline mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class=" text-blue-500 tooltip tooltip-top" data-tip="Delete Post" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 20h9"/>
+                                        <path d="M16.5 3.5a2.12 2.12 0 1 1 3 3L8 18l-4 1 1-4L16.5 3.5z"/>
+                                    </svg>
+                                </a>
 
                                 <form action="{{ route('admin.blog.destroy', $blog->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this post?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                    <button type="submit" class="tooltip tooltip-top hover:underline cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="tooltip tooltip-top text-red-600" data-tip="Delete Post" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="3 6 5 6 21 6"/>
+                                            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                                            <path d="M10 11v6"/>
+                                            <path d="M14 11v6"/>
+                                            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                                        </svg>
+                                    </button>
                                 </form>
                             </td>
                         </tr>
