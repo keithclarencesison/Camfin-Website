@@ -2,4 +2,5 @@
 !private/
 !public/
 !storage/app/public/
+!storage/app/public/
 !.gitignore
