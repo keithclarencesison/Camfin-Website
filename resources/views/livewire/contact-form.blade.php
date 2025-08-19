@@ -55,15 +55,15 @@
     </div>
 
     <div class="w-[500px] h-[550px] rounded shadow relative bg-[#538FD6]">
-        <!-- <div class="w-[280px] h-[300px] absolute top-10 right-0 max-sm:hidden">
+        <div class="w-[280px] h-[300px] absolute top-10 right-0 max-sm:hidden">
             <img src="images/sirMJ.png" alt="Sir MJ">
-        </div> -->
+        </div>
 
-        <label class="swap swap-flip absolute top-10 right-1 max-sm:hidden">
+        <!-- <label class="swap swap-flip absolute top-10 right-1 max-sm:hidden">
                 <input type="checkbox" />
                 <div class="swap-on w-[280px]"><img src="images/sirMJ.png" alt="Sir MJ"></div>
                 <div class="swap-off w-[350px]"><img src="images/sirMj2.png" alt="" class="h-[500px]"></div>
-        </label>
+        </label> -->
         
         <div class="w-1/2 h-full flex flex-col justify-between shrink max-sm:items-center max-sm:w-full max-sm:justify-center">
             <div class="ml-5 mt-5 max-sm:w-3/4 max-sm: mb-5">

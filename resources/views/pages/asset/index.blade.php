@@ -1,18 +1,31 @@
 <x-layouts.app>
     @include('sections.navbar-section')
-    <h1 class="text-center text-3xl font-bold my-8">Our Assets</h1>
+    <h1 class="text-center text-3xl font-bold my-8">Foreclosed Assets</h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
-        @foreach ($vehicles as $vehicle)
-            <div class="border rounded-lg shadow p-4">
-                <img src="{{ asset('storage/' . $vehicle->main_image) }}" alt="{{ $vehicle->vehicle_name }}" class="w-full h-48 object-cover rounded">
-                <h2 class="text-xl font-semibold mt-3">{{ $vehicle->vehicle_name }}</h2>
-                <p class="text-gray-600">{{ $vehicle->brand }} - {{ $vehicle->model }}</p>
-                <p class="font-bold mt-2">₱{{ number_format($vehicle->price, 2) }}</p>
-                <a href="{{ route('assets.show', $vehicle->id) }}" class="text-blue-500 hover:underline mt-2 block">View Details</a>
-            </div>
-        @endforeach
+    <div class="w-screen flex justify-center">   
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+            @foreach ($vehicles as $vehicle)
+              
+                <div class="card bg-base-100 shadow-sm">
+                    <figure class="h-64">
+                        <img
+                        src="{{ asset('storage/' . $vehicle->main_image) }}"
+                        alt="Shoes"
+                        class="w-64 p-5" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ $vehicle->vehicle_name }}</h2>
+                        <p class="">{{ $vehicle->brand }} <span>{{ $vehicle->model }}</span></p>
+                        <p>₱{{ number_format($vehicle->price, 2) }}</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary"><a href="{{ route('assets.show', $vehicle->id) }}" class="text-white hover:underline">Inquire</a></button>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
+    
 
     <div class="mt-8 px-6">
         {{ $vehicles->links() }}

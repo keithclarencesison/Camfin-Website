@@ -11,7 +11,7 @@
 
                         <div class="divider m-0"></div>
 
-                        <div id="main-menu" role="tablist" class="tabs flex flex-col justify-center">
+                        <div id="main-menu" role="tablist" class="tabs flex flex-col justify-center gap-5">
                             <a role="tab" data-tab="dashboard" class="tab flex p-0 hover:bg-white" data-tip="Dashboard">
                                 <div class="images w-1/4 flex justify-center">
                                     <img src="/images/dashboard-sidebar-icon/dashboard-overview.png" alt="" class="w-8 ">
@@ -26,8 +26,8 @@
                             </a>
 
                             <a role="tab" data-tab="asset" class="tab p-0 hover:bg-white" data-tip="Foreclosed Asset">
-                                <div class="">
-                                    <img src="" alt="">
+                                <div class="image3 w-1/4 flex justify-center">
+                                    <img src="/images/dashboard-sidebar-icon/asset.png" alt="" class="w-8">
                                 </div>
                                 <span class="sidebar-tab w-1/2 text-xl font-bold">Asset</span>
                             </a>
