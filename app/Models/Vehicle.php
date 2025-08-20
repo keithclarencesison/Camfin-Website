@@ -16,7 +16,8 @@ class Vehicle extends Model
         'model',
         'year',
         'price',
-        'main_image'
+        'main_image',
+        'main_image_public_id',
     ];
 
     public function images(){
