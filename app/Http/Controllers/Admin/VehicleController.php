@@ -32,11 +32,7 @@ class VehicleController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
-
-    {
-
-        dd($request->file('main_image'));
-        
+    {        
         $request->validate([
             'vehicle_name' => 'required|string|max:255',
             'main_image' => 'required|image',
@@ -48,39 +44,44 @@ class VehicleController extends Controller
         if (!$mainFile) {
             return redirect()->back()->withErrors(['main_image' => 'Main image is required.']);
         }
-        $upload = Cloudinary::upload(
-            $mainFile->getPathname(),
-            ['folder' => 'vehicles']
-        );
 
-
-        $mainImage = $upload->getSecurePath();
-        $mainImagePublicId = $upload->getPublicId();
-
-
-        $vehicle = Vehicle::create([
-            'vehicle_name' => $request->vehicle_name,
-            'description' => $request->description,
-            'brand' => $request->brand,
-            'model' => $request->model,
-            'year' => $request->year,
-            'price' => $request->price,
-            'main_image' => $mainImage, 
-            'main_image_public_id' => $mainImagePublicId,
-        ]);
+        try {
+            $upload = Cloudinary::upload($mainFile->getRealPath(),['folder' => 'vehicles']);
+            $mainImage = $upload->getSecurePath();
+            $mainImagePublicId = $upload->getPublicId();
+        } catch (\Exception $e) {
+            \Log::error('Cloudinary main image upload failed: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['main_image' => 'Failed to upload Main Image : ' . $e->getMessage()]);
+        }
+      
+        try {
+            $vehicle = Vehicle::create([
+                'vehicle_name' => $request->vehicle_name,
+                'description' => $request->description,
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'year' => $request->year,
+                'price' => $request->price,
+                'main_image' => $mainImage, 
+                'main_image_public_id' => $mainImagePublicId,
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Vehicle creation failed: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['vehicle' => 'Failed to create vehicle record.']);
+        }
+        
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-
-                $upload = Cloudinary::upload(
-                    $image->getRealPath(),
-                    ['folder' => 'vehicles']
-                );
-
-                $vehicle->images()->create([
-                    'image' => $upload->getSecurePath(),
-                    'public_id' => $upload->getPublicId(),
-                ]);
+                try{
+                    $upload = Cloudinary::upload($image->getRealPath(),['folder' => 'vehicles']);
+                    $vehicle->images()->create([
+                        'image' => $upload->getSecurePath(),
+                        'public_id' => $upload->getPublicId(),
+                    ]);
+                } catch (\Exception $e){
+                    \Log::warning('Cloudinary additional image upload failed: ' . $e->getMessage());
+                }
             }
         }
 

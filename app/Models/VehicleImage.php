@@ -9,7 +9,7 @@ class VehicleImage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['vehicle_id', 'image'];
+    protected $fillable = ['vehicle_id', 'image', 'public_id'];
 
     public function vehicle(){
         return $this->belongsTo(Vehicle::class);

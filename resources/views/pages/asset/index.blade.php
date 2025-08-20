@@ -9,7 +9,7 @@
                 <div class="card bg-base-100 shadow-sm">
                     <figure class="h-64">
                         <img
-                        src="{{ $vehicle->main_image }}"
+                        src="{{ $vehicle->main_image ?? asset('images/default.jpg') }}"
                         alt="{{ $vehicle->vehicle_name }}"
                         class="w-64 p-5 object-cover" />
                     </figure>

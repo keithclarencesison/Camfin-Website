@@ -11,13 +11,15 @@
                     if (!empty($vehicle->main_image)) {
                         $images[] = $vehicle->main_image;
                     }
-                    if (!empty($vehicle->images) && is_array($vehicle->images)) {
-                        $images = array_merge($images, $vehicle->images);
+                    if ($vehicle->images && $vehicle->images->count()) {
+                        foreach ($vehicle->images as $img) {
+                            $images[] = $img->image;
+                        }
                     }
                 @endphp
 
                 @foreach($images as $img)
-                    <img src="{{ asset('storage/' . $img) }}" 
+                    <img src="{{ $img }}" 
                         class="w-20 h-20 object-cover border rounded cursor-pointer hover:opacity-80"
                         onclick="document.getElementById('mainImage').src=this.src">
                 @endforeach
@@ -26,7 +28,7 @@
             {{-- Main Image --}}
             <div class="flex-1 order-1 md:order-2">
                 <img id="mainImage" 
-                    src="{{ asset('storage/' . ($images[0] ?? 'default.jpg')) }}" 
+                    src="{{ $images[0] ?? asset('default.jpg') }}" 
                     class="w-full h-auto object-cover rounded-lg shadow">
             </div>
         </div>
