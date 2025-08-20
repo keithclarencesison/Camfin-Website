@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('year')->nullable();
             $table->decimal('price', 10, 2)->nullable();
             $table->string('main_image')->nullable();
+            $table->string('main_image_public_id')->nullable();
             $table->timestamps();
         });
 
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->onDelete('cascade');
             $table->string('image');
+            $table->string('public_id')->nullable();
             $table->timestamps();
         });
     }
@@ -36,7 +38,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicles');
         Schema::dropIfExists('vehicle_images');
+        Schema::dropIfExists('vehicles');
+        
     }
 };

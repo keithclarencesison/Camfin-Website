@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use Illuminate\Http\RedirectResponse;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class VehicleController extends Controller
 {
@@ -29,7 +31,7 @@ class VehicleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'vehicle_name' => 'required|string|max:255',
@@ -38,7 +40,14 @@ class VehicleController extends Controller
 
         ]);
 
-        $mainImage = $request->file('main_image')->store('vehicles', 'public');
+        $upload = Cloudinary::upload(
+            $request->file('main_image')->getRealPath(),
+            ['folder' => 'vehicles']
+        );
+
+        $mainImage = $upload->getSecurePath();
+        $mainImagePublicId = $upload->getPublicId();
+
 
         $vehicle = Vehicle::create([
             'vehicle_name' => $request->vehicle_name,
@@ -48,17 +57,26 @@ class VehicleController extends Controller
             'year' => $request->year,
             'price' => $request->price,
             'main_image' => $mainImage, 
+            'main_image_public_id' => $mainImagePublicId,
         ]);
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
+
+                $upload = Cloudinary::upload(
+                    $image->getRealPath(),
+                    ['folder' => 'vehicles']
+                );
+
                 $vehicle->images()->create([
-                    'image' => $image->store('vehicles', 'public')
+                    'image' => $upload->getSecurePath(),
+                    'public_id' => $upload->getPublicId(),
                 ]);
             }
         }
 
-        return redirect()->route('admin.dashboard', ['tab' => 'vehicles'])->with('success', 'Vehicle added successfully');
+        return redirect()->route('admin.dashboard', ['tab' => 'vehicles'])
+                        ->with('success', 'Vehicle added successfully');
 
     }
 
@@ -95,9 +113,21 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
 
         // If image exists, delete it
-        if ($vehicle->image && \Storage::exists('public/' . $vehicle->image)) {
-            \Storage::delete('public/' . $vehicle->image);
+        // if ($vehicle->image && \Storage::exists('public/' . $vehicle->image)) {
+        //     \Storage::delete('public/' . $vehicle->image);
+        // }
+
+        // Delete main image from Cloudinary
+        if ($vehicle->main_image_public_id) {
+            Cloudinary::destroy($vehicle->main_image_public_id);
         }
+
+        foreach ($vehicle->images as $img) {
+            if ($img->public_id) {
+                Cloudinary::destroy($img->public_id);
+            }
+            $img->delete();
+        }   
 
         $vehicle->delete();
 

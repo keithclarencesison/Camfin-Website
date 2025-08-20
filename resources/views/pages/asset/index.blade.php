@@ -9,16 +9,16 @@
                 <div class="card bg-base-100 shadow-sm">
                     <figure class="h-64">
                         <img
-                        src="{{ asset('storage/' . $vehicle->main_image) }}"
-                        alt="Shoes"
-                        class="w-64 p-5" />
+                        src="{{ $vehicle->main_image }}"
+                        alt="{{ $vehicle->vehicle_name }}"
+                        class="w-64 p-5 object-cover" />
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title">{{ $vehicle->vehicle_name }}</h2>
                         <p class="">{{ $vehicle->brand }} <span>{{ $vehicle->model }}</span></p>
                         <p>₱{{ number_format($vehicle->price, 2) }}</p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary"><a href="{{ route('assets.show', $vehicle->id) }}" class="text-white hover:underline">Inquire</a></button>
+                            <a href="{{ route('assets.show', $vehicle->id) }}" class="btn btn-primary text-white hover:underline">Inquire</a>
                         </div>
                     </div>
                 </div>

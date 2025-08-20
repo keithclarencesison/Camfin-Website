@@ -43,7 +43,6 @@
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-            
         </div>
     </div>
 </x-layouts.app>
