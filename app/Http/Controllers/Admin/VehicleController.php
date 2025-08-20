@@ -32,7 +32,11 @@ class VehicleController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
+
     {
+
+        dd($request->file('main_image'));
+        
         $request->validate([
             'vehicle_name' => 'required|string|max:255',
             'main_image' => 'required|image',
