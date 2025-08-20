@@ -46,14 +46,14 @@ class VehicleController extends Controller
             return redirect()->back()->withErrors(['main_image' => 'Main image is required.']);
         }
 
-        try {   
-            $upload = cloudinary()->uploadApi()->upload($mainFile->getRealPath(),['folder' => 'vehicles']);
-            $mainImage = $upload['secure_url'];     // Cloudinary image URL
-            $mainImagePublicId = $upload['public_id']; // Cloudinary public_id
-        } catch (\Exception $e) {
-            \Log::error('Cloudinary main image upload failed: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['main_image' => 'Failed to upload Main Image : ' . $e->getMessage()]);
-        }
+        $upload = cloudinary()->uploadApi()->upload(
+            $mainFile->getRealPath(),
+            ['folder' => 'vehicles']
+        );
+
+        $mainImage = $upload['secure_url'];     // Cloudinary URL
+        $mainImagePublicId = $upload['public_id']; // ✅ public_id
+        
       
         try {
             $vehicle = Vehicle::create([
@@ -74,15 +74,17 @@ class VehicleController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                try{
-                    $upload = cloudinary()->uploadApi()->upload($image->getRealPath(),['folder' => 'vehicles']);
-                    $vehicle->images()->create([
-                        'image' => $upload['secure_url'],
-                        'public_id' => $upload['public_id'],
-                    ]);
-                } catch (\Exception $e){
-                    \Log::warning('Cloudinary additional image upload failed: ' . $e->getMessage());
-                }
+
+                $upload = cloudinary()->uploadApi()->upload(
+                    $image->getRealPath(),
+                    ['folder' => 'vehicles']
+                );
+
+                $vehicle->images()->create([
+                    'image' => $upload['secure_url'],
+                    'public_id' => $upload['public_id'],
+                ]);
+                
             }
         }
 
