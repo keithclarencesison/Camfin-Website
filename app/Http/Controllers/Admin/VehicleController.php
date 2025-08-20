@@ -40,10 +40,15 @@ class VehicleController extends Controller
 
         ]);
 
+        $mainFile = $request->file('main_image');
+        if (!$mainFile) {
+            return redirect()->back()->withErrors(['main_image' => 'Main image is required.']);
+        }
         $upload = Cloudinary::upload(
-            $request->file('main_image')->getRealPath(),
+            $mainFile->getPathname(),
             ['folder' => 'vehicles']
         );
+
 
         $mainImage = $upload->getSecurePath();
         $mainImagePublicId = $upload->getPublicId();
