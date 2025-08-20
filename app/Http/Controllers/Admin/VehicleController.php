@@ -33,6 +33,7 @@ class VehicleController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {        
+
         $request->validate([
             'vehicle_name' => 'required|string|max:255',
             'main_image' => 'required|image',
@@ -45,10 +46,10 @@ class VehicleController extends Controller
             return redirect()->back()->withErrors(['main_image' => 'Main image is required.']);
         }
 
-        try {
-            $upload = Cloudinary::upload($mainFile->getRealPath(),['folder' => 'vehicles']);
-            $mainImage = $upload->getSecurePath();
-            $mainImagePublicId = $upload->getPublicId();
+        try {   
+            $upload = cloudinary()->uploadApi()->upload($mainFile->getRealPath(),['folder' => 'vehicles']);
+            $mainImage = $upload['secure_url'];     // Cloudinary image URL
+            $mainImagePublicId = $upload['public_id']; // Cloudinary public_id
         } catch (\Exception $e) {
             \Log::error('Cloudinary main image upload failed: ' . $e->getMessage());
             return redirect()->back()->withErrors(['main_image' => 'Failed to upload Main Image : ' . $e->getMessage()]);
@@ -74,10 +75,10 @@ class VehicleController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 try{
-                    $upload = Cloudinary::upload($image->getRealPath(),['folder' => 'vehicles']);
+                    $upload = cloudinary()->uploadApi()->upload($image->getRealPath(),['folder' => 'vehicles']);
                     $vehicle->images()->create([
-                        'image' => $upload->getSecurePath(),
-                        'public_id' => $upload->getPublicId(),
+                        'image' => $upload['secure_url'],
+                        'public_id' => $upload['public_id'],
                     ]);
                 } catch (\Exception $e){
                     \Log::warning('Cloudinary additional image upload failed: ' . $e->getMessage());
@@ -85,7 +86,7 @@ class VehicleController extends Controller
             }
         }
 
-        return redirect()->route('admin.dashboard', ['tab' => 'vehicles'])
+        return redirect()->route('admin.vehicles.index')
                         ->with('success', 'Vehicle added successfully');
 
     }

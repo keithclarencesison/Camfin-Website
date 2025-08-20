@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('vehicles', function (Blueprint $table) {
-            $table->string('vehicle_name')->after('id'); // adjust after which column you want
+            $table->string('public_id')->nullable();
         });
     }
 
