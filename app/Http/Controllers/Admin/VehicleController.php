@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\VehicleImage;
 use Illuminate\Http\RedirectResponse;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
@@ -17,7 +18,6 @@ class VehicleController extends Controller
     {
         $vehicles = Vehicle::latest()->paginate(10);
         return view('admin.vehicles.index', compact('vehicles'));
-
     }
 
     /**
@@ -32,65 +32,53 @@ class VehicleController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
-    {        
-
+    {
         $request->validate([
             'vehicle_name' => 'required|string|max:255',
-            'main_image' => 'required|image',
-            'images.*' => 'image',
-
+            'brand'        => 'nullable|string|max:255',
+            'model'        => 'nullable|string|max:255',
+            'year'         => 'nullable|integer',
+            'price'        => 'nullable|numeric',
+            'description'  => 'nullable|string',
+            'main_image'   => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*'     => 'image',
         ]);
 
-        $mainFile = $request->file('main_image');
-        if (!$mainFile) {
-            return redirect()->back()->withErrors(['main_image' => 'Main image is required.']);
-        }
-
-        $upload = cloudinary()->uploadApi()->upload(
-            $mainFile->getRealPath(),
-            ['folder' => 'vehicles']
+        // Upload main image
+        $uploadedMain = Cloudinary::upload(
+            $request->file('main_image')->getRealPath(),
+            ['folder' => 'vehicles/main']
         );
 
-        $mainImage = $upload['secure_url'];     // Cloudinary URL
-        $mainImagePublicId = $upload['public_id']; // ✅ public_id
-        
-      
-        try {
-            $vehicle = Vehicle::create([
-                'vehicle_name' => $request->vehicle_name,
-                'description' => $request->description,
-                'brand' => $request->brand,
-                'model' => $request->model,
-                'year' => $request->year,
-                'price' => $request->price,
-                'main_image' => $mainImage, 
-                'main_image_public_id' => $mainImagePublicId,
-            ]);
-        } catch (\Exception $e) {
-            \Log::error('Vehicle creation failed: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['vehicle' => 'Failed to create vehicle record.']);
-        }
-        
+        // Save vehicle with main image info
+        $vehicle = Vehicle::create([
+            'vehicle_name'          => $request->vehicle_name,
+            'description'           => $request->description,
+            'brand'                 => $request->brand,
+            'model'                 => $request->model,
+            'year'                  => $request->year,
+            'price'                 => $request->price,
+            'main_image'            => $uploadedMain->getSecurePath(),
+            'main_image_public_id'  => $uploadedMain->getPublicId(),
+        ]);
 
+        // Upload gallery images if provided
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-
-                $upload = cloudinary()->uploadApi()->upload(
-                    $image->getRealPath(),
-                    ['folder' => 'vehicles']
-                );
-
-                $vehicle->images()->create([
-                    'image' => $upload['secure_url'],
-                    'public_id' => $upload['public_id'],
+                $upload = Cloudinary::upload($image->getRealPath(), [
+                    'folder' => 'vehicles/gallery'
                 ]);
-                
+
+                VehicleImage::create([
+                    'vehicle_id' => $vehicle->id,
+                    'image'      => $upload->getSecurePath(),
+                    'public_id'  => $upload->getPublicId(),
+                ]);
             }
         }
 
         return redirect()->route('admin.vehicles.index')
-                        ->with('success', 'Vehicle added successfully');
-
+            ->with('success', 'Vehicle added successfully');
     }
 
     /**
@@ -121,30 +109,27 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Vehicle $vehicle)
     {
-        $vehicle = Vehicle::findOrFail($id);
-
-        // If image exists, delete it
-        // if ($vehicle->image && \Storage::exists('public/' . $vehicle->image)) {
-        //     \Storage::delete('public/' . $vehicle->image);
-        // }
-
-        // Delete main image from Cloudinary
+        // ✅ Delete main image from Cloudinary
         if ($vehicle->main_image_public_id) {
             Cloudinary::destroy($vehicle->main_image_public_id);
         }
 
-        foreach ($vehicle->images as $img) {
-            if ($img->public_id) {
-                Cloudinary::destroy($img->public_id);
+        // ✅ Delete gallery images from Cloudinary
+        foreach ($vehicle->images as $image) {
+            if ($image->public_id) {
+                Cloudinary::destroy($image->public_id);
             }
-            $img->delete();
-        }   
+        }
 
+        // ✅ Delete related images from database
+        $vehicle->images()->delete();
+
+        // ✅ Delete the vehicle record itself
         $vehicle->delete();
 
-        return redirect()->route('admin.dashboard', ['tab' => 'asset'])
-                        ->with('success', 'Vehicle deleted successfully.');
+        return redirect()->route('admin.vehicles.index')
+            ->with('success', 'Vehicle deleted successfully!');
     }
 }
