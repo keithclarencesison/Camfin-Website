@@ -17,7 +17,7 @@ class BlogPageController extends Controller
             ->latest()
             ->paginate(6);
         } else {
-            $recentPosts = new LengthAwarePaginator([], 0, 6);
+            $recentPosts = collect();
         }
         
 
