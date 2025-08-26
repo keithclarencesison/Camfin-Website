@@ -17,7 +17,7 @@ class BlogPageController extends Controller
             ->latest()
             ->paginate(6);
         } else {
-            $recentPosts = collect();
+            $recentPosts = Blog::latest()->paginate(6);
         }
         
 
