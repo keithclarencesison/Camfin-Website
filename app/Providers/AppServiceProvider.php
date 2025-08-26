@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
             Storage::extend('cloudinary', function ($app, $config) {
-            return new Filesystem(new CloudinaryAdapter());
+            // return new Filesystem(new CloudinaryAdapter());
         });
     }
 }

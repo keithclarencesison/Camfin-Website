@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 
 class BlogPageController extends Controller
@@ -12,9 +12,14 @@ class BlogPageController extends Controller
     public function index(){
         $latestPost = Blog::latest()->first();
         
-        $recentPosts = Blog::where('id', '!=', $latestPost->id)
-        ->latest()
-        ->paginate(6);
+        if ($latestPost) {
+            $recentPosts = Blog::where('id', '!=', $latestPost->id)
+            ->latest()
+            ->paginate(6);
+        } else {
+            $recentPosts = new LengthAwarePaginator([], 0, 6);
+        }
+        
 
         return view('pages.blog.index', compact('latestPost', 'recentPosts'));
     }

@@ -15,6 +15,13 @@ class AssetPageController extends Controller
         public function show($id)
     {
         $vehicle = Vehicle::findOrFail($id);
+
+        if (!$vehicle) {
+            // Optional: redirect to assets list with a message
+            return redirect()->route('assets.index')
+                             ->with('error', 'Asset not found.');
+        }
+
         return view('pages.asset.show', compact('vehicle'));
     }
 }
