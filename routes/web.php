@@ -29,7 +29,13 @@ Route::get('/assets', [AssetPageController::class, 'index'])->name('assets.index
 Route::get('/assets/{id}', [AssetPageController::class, 'show'])->name('assets.show');
 
 Route::get('/debug-cloudinary', function () {
-    return response()->json(config('services.cloudinary'));
+    return [
+        'CLOUDINARY_URL' => env('CLOUDINARY_URL'),
+        'CLOUDINARY_CLOUD_NAME' => env('CLOUDINARY_CLOUD_NAME'),
+        'CLOUDINARY_API_KEY' => env('CLOUDINARY_API_KEY'),
+        'CLOUDINARY_API_SECRET' => env('CLOUDINARY_API_SECRET') ? 'SET' : 'MISSING',
+        'config_cloudinary' => config('cloudinary'),
+    ];
 });
 
 //ADMIN
