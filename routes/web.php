@@ -29,23 +29,13 @@ Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show
 Route::get('/assets', [AssetPageController::class, 'index'])->name('assets.index');
 Route::get('/assets/{id}', [AssetPageController::class, 'show'])->name('assets.show');
 
-Route::get('/debug-cloudinary', function () {
-    try {
-        // Try a small test upload
-        $result = Cloudinary::upload('https://res.cloudinary.com/demo/image/upload/sample.jpg', [
-            'folder' => 'debug'
-        ]);
-
-        return response()->json([
-            'status' => 'success',
-            'secure_url' => $result->getSecurePath(),
-        ]);
-    } catch (\Exception $e) {
-        return response()->json([
-            'status' => 'error',
-            'message' => $e->getMessage(),
-        ], 500);
-    }
+Route::get('/check-env', function () {
+    return [
+        'CLOUDINARY_URL' => env('CLOUDINARY_URL'),
+        'CLOUDINARY_CLOUD_NAME' => env('CLOUDINARY_CLOUD_NAME'),
+        'CLOUDINARY_API_KEY' => env('CLOUDINARY_API_KEY'),
+        'CLOUDINARY_API_SECRET' => env('CLOUDINARY_API_SECRET'),
+    ];
 });
 
 //ADMIN
