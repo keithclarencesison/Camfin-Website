@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog; 
 use Illuminate\Support\Str;
-
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class BlogController extends Controller
 {
-
-    
     /**
      * Display a listing of the resource.
      */
@@ -40,11 +38,15 @@ class BlogController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-
         $imagePath = null;
 
         if($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('blogs', 'public');
+            $uploadedFileUrl = Cloudinary::upload(
+                $request->file('image')->getRealPath(),
+                ['folder' => 'blogs']
+            )->getSecurePath();
+
+            $imageUrl = $uploadedFileUrl;
         }
 
         Blog::create([
@@ -52,10 +54,12 @@ class BlogController extends Controller
             'slug' => Str::slug($request->title),
             'content' => $request->input('content'),
             'author' => $request->author,
-            'image' => $imagePath,
+            'image' => $imageUrl,
         ]);
 
-        return redirect()->route('admin.dashboard', ['tab' => 'blog'])->with('success', 'Blog post created successfully!');
+        return redirect()
+            ->route('admin.dashboard', ['tab' => 'blog'])
+            ->with('success', 'Blog post created successfully!');
     }
 
     /**

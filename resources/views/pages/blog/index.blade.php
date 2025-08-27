@@ -8,7 +8,7 @@
         @if($latestPost)
             <div class="mb-10 border-b pb-6">
                 @if($latestPost->image)
-                    <img src="{{ asset('storage/' . $latestPost->image) }}"
+                    <img src="{{ $latestPost->image }}"
                          alt="{{ $latestPost->title }}"
                          class="w-full h-80 object-cover rounded-md mb-4">
                 @endif
@@ -32,7 +32,7 @@
             @forelse($recentPosts as $blog)
                 <div class="border-b border-gray-200 pb-4">
                     @if($blog->image)
-                        <img src="{{ asset('storage/' . $blog->image) }}"
+                        <img src="{{ $blog->image }}"
                              alt="{{ $blog->title }}"
                              class="w-full h-48 object-cover rounded-md mb-2">
                     @endif

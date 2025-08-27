@@ -20,7 +20,6 @@ class BlogPageController extends Controller
             $recentPosts = Blog::latest()->paginate(6);
         }
         
-
         return view('pages.blog.index', compact('latestPost', 'recentPosts'));
     }
 
