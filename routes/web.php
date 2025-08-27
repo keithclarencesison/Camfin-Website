@@ -38,6 +38,10 @@ Route::get('/check-env', function () {
     ];
 });
 
+Route::get('/check-cloudinary', function() {
+    dd(config('services.cloudinary'));
+});
+
 //ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
