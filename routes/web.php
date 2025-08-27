@@ -28,6 +28,10 @@ Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show
 Route::get('/assets', [AssetPageController::class, 'index'])->name('assets.index');
 Route::get('/assets/{id}', [AssetPageController::class, 'show'])->name('assets.show');
 
+Route::get('/debug-cloudinary', function () {
+    return response()->json(config('services.cloudinary'));
+});
+
 //ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
