@@ -38,7 +38,7 @@ class BlogController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $imagePath = null;
+        $imageUrl = null;
 
         if($request->hasFile('image')) {
             $uploadedFileUrl = Cloudinary::upload(
