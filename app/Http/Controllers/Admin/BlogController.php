@@ -41,7 +41,7 @@ class BlogController extends Controller
         $imageUrl = null;
 
         if($request->hasFile('image')) {
-            $uploadedFileUrl = Cloudinary::upload(
+            $uploadedFileUrl = Cloudinary::uploadFile(
                 $request->file('image')->getRealPath(),
                 ['folder' => 'blogs']
             )->getSecurePath();
