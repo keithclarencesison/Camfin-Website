@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog; 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class BlogController extends Controller
 {
@@ -39,32 +40,33 @@ class BlogController extends Controller
         ]);
 
         $imageUrl = null;
-        
-        try{
-            if($request->hasFile('image')) {
-                $uploadedImage = $request->file('image');
 
-                $imageUrl = Cloudinary::upload($uploadedImage->getRealPath(),[
-                    'folder' => 'blogs'
-                ])->getSecurePath();
+        if($request->hasFile('image')) {
+            try {
+            // Use the Cloudinary facade directly
+                $result = Cloudinary::uploadApi()->upload($request->file('image')->getRealPath(), [
+                    'folder' => 'blogs',
+                    'resource_type' => 'auto'
+                ]);
+                
+                $imageUrl = $result['secure_url'];
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['image' => 'Upload failed: ' . $e->getMessage()]);
             }
+         }
 
-            Blog::create([
-                'title' => $request->title,
-                'slug' => Str::slug($request->title),
-                'content' => $request->input('content'),
-                'author' => $request->author,
-                'image' => $imageUrl,
-            ]);
+        Blog::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'content' => $request->input('content'),
+            'author' => $request->author,
+            'image' => $imageUrl,
+        ]);
 
-            return redirect()
-                ->route('admin.dashboard', ['tab' => 'blog'])
-                ->with('success', 'Blog post created successfully!');
+        return redirect()
+            ->route('admin.dashboard', ['tab' => 'blog'])
+            ->with('success', 'Blog post created successfully!');
 
-        } catch (\Exception $e) {
-            return back()->with('error', 'Cloudinary upload failed: ' . $e->getMessage());
-        }
-     
     }
 
     /**

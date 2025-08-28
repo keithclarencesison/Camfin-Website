@@ -38,6 +38,14 @@ Route::get('/check-env', function () {
     ];
 });
 
+Route::get('/test-upload', function () {
+    $url = Cloudinary::upload(public_path('test.jpg'), [
+        'folder' => 'blogs'
+    ])->getSecurePath();
+
+    return $url;
+});
+
 Route::get('/check-cloudinary', function() {
     dd(config('services.cloudinary'));
 });
