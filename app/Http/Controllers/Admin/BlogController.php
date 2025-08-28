@@ -39,35 +39,32 @@ class BlogController extends Controller
         ]);
 
         $imageUrl = null;
+        
+        try{
+            if($request->hasFile('image')) {
+                $uploadedImage = $request->file('image');
 
-        if($request->hasFile('image')) {
+                $imageUrl = Cloudinary::upload($uploadedImage->getRealPath(),[
+                    'folder' => 'blogs'
+                ])->getSecurePath();
+            }
 
-            Cloudinary::config([
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key'    => env('CLOUDINARY_API_KEY'),
-                'api_secret' => env('CLOUDINARY_API_SECRET'),
-                'secure'     => true,
+            Blog::create([
+                'title' => $request->title,
+                'slug' => Str::slug($request->title),
+                'content' => $request->input('content'),
+                'author' => $request->author,
+                'image' => $imageUrl,
             ]);
-            
-            $uploadedFileUrl = Cloudinary::uploadApi()->upload(
-                $request->file('image')->getRealPath(),
-                ['folder' => 'blogs']
-            );
 
-            $imageUrl = $uploadedFileUrl['secure_url'] ?? null;
+            return redirect()
+                ->route('admin.dashboard', ['tab' => 'blog'])
+                ->with('success', 'Blog post created successfully!');
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Cloudinary upload failed: ' . $e->getMessage());
         }
-
-        Blog::create([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'content' => $request->input('content'),
-            'author' => $request->author,
-            'image' => $imageUrl,
-        ]);
-
-        return redirect()
-            ->route('admin.dashboard', ['tab' => 'blog'])
-            ->with('success', 'Blog post created successfully!');
+     
     }
 
     /**
