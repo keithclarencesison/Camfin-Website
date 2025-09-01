@@ -76,7 +76,7 @@ class VehicleController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 try {
-                    $result = Cloudinary::upload(
+                    $result = Cloudinary::uploadApi()->upload(
                         $file->getRealPath(),
                         [
                             'folder' => 'vehicles/gallery',
@@ -87,12 +87,12 @@ class VehicleController extends Controller
                     // Save to VehicleImage table
                     VehicleImage::create([
                         'vehicle_id' => $vehicle->id,
-                        'image_url'  => $result->getSecurePath(),
-                        'public_id'  => $result->getPublicId(),
+                        'image_url'  => $result['secure_url'],
                     ]);
                 } catch (\Exception $e) {
-                    // You may choose to continue uploading others instead of failing all
-                    continue;
+                    return redirect()->back()->withErrors([
+                        'images' => 'Upload failed: ' . $e->getMessage()
+                    ]);
                 }
             }
         }
