@@ -41,6 +41,7 @@ class VehicleController extends Controller
             'price'        => 'nullable|numeric',
             'description'  => 'nullable|string',
             'main_image'   => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'image|max:2048'
         ]);
 
         $imageUrl = null;
@@ -71,6 +72,30 @@ class VehicleController extends Controller
             'price'                 => $request->price,
             'main_image'            => $imageUrl,
         ]);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                try {
+                    $result = Cloudinary::upload(
+                        $file->getRealPath(),
+                        [
+                            'folder' => 'vehicles/gallery',
+                            'resource_type' => 'auto',
+                        ]
+                    );
+
+                    // Save to VehicleImage table
+                    VehicleImage::create([
+                        'vehicle_id' => $vehicle->id,
+                        'image_url'  => $result->getSecurePath(),
+                        'public_id'  => $result->getPublicId(),
+                    ]);
+                } catch (\Exception $e) {
+                    // You may choose to continue uploading others instead of failing all
+                    continue;
+                }
+            }
+        }
 
 
         return redirect()
