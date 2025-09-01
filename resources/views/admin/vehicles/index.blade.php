@@ -39,8 +39,8 @@
                     @foreach($vehicles as $vehicle)
                         <tr class="text-center">
                             <td class="">
-                                @if($vehicle->main_image && file_exists(public_path('storage/' . $vehicle->main_image)))
-                                    <img src="{{ asset('storage/' . $vehicle->main_image) }}" alt="{{ $vehicle->title }}" class="w-24 h-24 object-cover mx-auto">
+                                @if($vehicle->main_image)
+                                    <img src="{{ $vehicle->main_image }}" alt="{{ $vehicle->title }}" class="w-24 h-24 object-cover mx-auto">
                                 @else
                                     <span>No image</span>
                                 @endif

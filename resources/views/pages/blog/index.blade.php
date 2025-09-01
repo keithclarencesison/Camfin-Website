@@ -21,7 +21,7 @@
                     By {{ $latestPost->author }} | {{ $latestPost->created_at->format('M d, Y') }}
                 </p>
                 <p class="mt-2 text-gray-700">
-                    {{ Str::limit(strip_tags($latestPost->content), 200) }}
+                    {{ str(strip_tags($latestPost->content))->limit(200) }}
                 </p>
             </div>
         @endif
@@ -45,7 +45,7 @@
                         By {{ $blog->author }} | {{ $blog->created_at->format('M d, Y') }}
                     </p>
                     <p class="mt-1 text-gray-700">
-                        {{ Str::limit(strip_tags($blog->content), 100) }}
+                        {{ str(strip_tags($blog->content))->limit(200) }}
                     </p>
                 </div>
             @empty

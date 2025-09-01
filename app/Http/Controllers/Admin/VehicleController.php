@@ -41,16 +41,27 @@ class VehicleController extends Controller
             'price'        => 'nullable|numeric',
             'description'  => 'nullable|string',
             'main_image'   => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'images.*'     => 'image',
         ]);
 
-        // Upload main image
-        $uploadedMain = Cloudinary::upload(
-            $request->file('main_image')->getRealPath(),
-            ['folder' => 'vehicles/main']
-        );
+        $imageUrl = null;
 
-        // Save vehicle with main image info
+        if ($request->hasFile('main_image')) {
+            try {
+                $result = Cloudinary::uploadApi()->upload(
+                    $request->file('main_image')->getRealPath(),
+                    [
+                        'folder' => 'vehicles',
+                        'resource_type' => 'auto',
+                    ]
+                );
+
+                $imageUrl = $result['secure_url'];
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['main_image' => 'Upload failed: ' . $e->getMessage()]);
+            }
+        }
+
+
         $vehicle = Vehicle::create([
             'vehicle_name'          => $request->vehicle_name,
             'description'           => $request->description,
@@ -58,26 +69,12 @@ class VehicleController extends Controller
             'model'                 => $request->model,
             'year'                  => $request->year,
             'price'                 => $request->price,
-            'main_image'            => $uploadedMain->getSecurePath(),
-            'main_image_public_id'  => $uploadedMain->getPublicId(),
+            'main_image'            => $imageUrl,
         ]);
 
-        // Upload gallery images if provided
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $upload = Cloudinary::upload($image->getRealPath(), [
-                    'folder' => 'vehicles/gallery'
-                ]);
 
-                VehicleImage::create([
-                    'vehicle_id' => $vehicle->id,
-                    'image'      => $upload->getSecurePath(),
-                    'public_id'  => $upload->getPublicId(),
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.vehicles.index')
+        return redirect()
+            ->route('admin.vehicles', )
             ->with('success', 'Vehicle added successfully');
     }
 

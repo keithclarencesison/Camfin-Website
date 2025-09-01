@@ -1,7 +1,7 @@
 <x-layouts.app>
     <div class="max-w-4xl mx-auto my-8">
         @if($blog->image)
-            <img src="{{ asset('storage/' . $blog->image) }}" 
+            <img src="{{ $blog->image }}" 
             alt="{{ $blog->title }}" 
             class="w-full h-full object-cover rounded-md mb-4">
         @endif
