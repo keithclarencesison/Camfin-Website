@@ -74,7 +74,7 @@ class VehicleController extends Controller
 
 
         return redirect()
-            ->route('admin.vehicles', )
+            ->route('admin.vehicles.index', )
             ->with('success', 'Vehicle added successfully');
     }
 
