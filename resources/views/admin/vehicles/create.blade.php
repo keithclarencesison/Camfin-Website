@@ -42,7 +42,7 @@
 
                     <fieldset class="fieldset self-center">
                         <legend class="fieldset-legend">Images</legend>
-                        <input type="file" class="file-input w-xl" name="images[]" required />
+                        <input type="file" class="file-input w-xl" name="images[]" multiple required />
                         <label class="label">Select multiple picture</label>
                     </fieldset>
 

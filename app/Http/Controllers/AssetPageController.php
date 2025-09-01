@@ -14,7 +14,7 @@ class AssetPageController extends Controller
 
         public function show($id)
     {
-        $vehicle = Vehicle::findOrFail($id);
+        $vehicle = Vehicle::with('images')->findOrFail($id);
 
         if (!$vehicle) {
             // Optional: redirect to assets list with a message
