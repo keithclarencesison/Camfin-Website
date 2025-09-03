@@ -16,7 +16,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicles = Vehicle::latest()->paginate(10);
+        $vehicles = Vehicle::latest()->paginate(5);
         return view('admin.vehicles.index', compact('vehicles'));
     }
 
@@ -75,31 +75,26 @@ class VehicleController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                try {
-                    $result = Cloudinary::uploadApi()->upload(
-                        $file->getRealPath(),
-                        [
-                            'folder' => 'vehicles/gallery',
-                            'resource_type' => 'auto',
-                        ]
-                    );
+                $result = Cloudinary::uploadApi()->upload(
+                    $file->getRealPath(),
+                    [
+                        'folder' => 'vehicles/gallery',
+                        'resource_type' => 'auto',
+                    ]
+                );
 
-                    // Save to VehicleImage table
-                    VehicleImage::create([
-                        'vehicle_id' => $vehicle->id,
-                        'image_url'  => $result['secure_url'],
-                    ]);
-                } catch (\Exception $e) {
-                    return redirect()->back()->withErrors([
-                        'images' => 'Upload failed: ' . $e->getMessage()
-                    ]);
-                }
+                // Save to VehicleImage table
+                VehicleImage::create([
+                    'vehicle_id' => $vehicle->id,
+                    'image'  => $result['secure_url'],
+                    'public_id'  => $result['public_id'] ?? null,
+                ]);
             }
         }
 
 
         return redirect()
-            ->route('admin.vehicles.index', )
+            ->route('admin.dashboard', ['tab' => 'asset'])
             ->with('success', 'Vehicle added successfully');
     }
 
@@ -133,25 +128,24 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
-        // ✅ Delete main image from Cloudinary
-        if ($vehicle->main_image_public_id) {
-            Cloudinary::destroy($vehicle->main_image_public_id);
+        // Delete main image if it has a public_id
+        if (!empty($vehicle->main_image_public_id)) {
+            Cloudinary::uploadApi()->destroy($vehicle->main_image_public_id);
         }
 
-        // ✅ Delete gallery images from Cloudinary
+        // Delete gallery images
         foreach ($vehicle->images as $image) {
-            if ($image->public_id) {
-                Cloudinary::destroy($image->public_id);
+            if (!empty($image->public_id)) {
+                Cloudinary::uploadApi()->destroy($image->public_id);
             }
+            $image->delete(); // remove from DB
         }
 
-        // ✅ Delete related images from database
-        $vehicle->images()->delete();
-
-        // ✅ Delete the vehicle record itself
+        // Finally delete vehicle record
         $vehicle->delete();
 
-        return redirect()->route('admin.vehicles.index')
-            ->with('success', 'Vehicle deleted successfully!');
+        return redirect()
+            ->route('admin.dashboard', ['tab' => 'asset'])
+            ->with('success', 'Vehicle deleted successfully');
     }
 }

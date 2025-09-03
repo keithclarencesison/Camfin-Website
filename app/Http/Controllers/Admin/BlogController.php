@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::latest()->paginate(10)->appends(['tab' => 'blog']);
+        $blogs = Blog::latest()->paginate(1)->appends(['tab' => 'blog']);
         return view('admin.blog.index', compact('blogs'));
     }
 

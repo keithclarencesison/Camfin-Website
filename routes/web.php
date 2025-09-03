@@ -9,6 +9,7 @@ use App\Models\Vehicle;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\AssetPageController;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Http\Controllers\LoanController;
 
 // Route::get('/', function () {
 //     return view("welcome");
@@ -37,6 +38,12 @@ Route::get('/check-env', function () {
         'CLOUDINARY_API_SECRET' => env('CLOUDINARY_API_SECRET'),
     ];
 });
+
+Route::get('/loan/start', [LoanController::class, 'selectClientType'])->name('loan.start');
+Route::post('/loan/start', [LoanController::class, 'chooseClientType'])->name('loan.chooseType');
+
+Route::get('/loan/apply/{client_type}', [LoanController::class, 'create'])->name('loan.create');
+Route::post('/loan/apply', [LoanController::class, 'store'])->name('loan.store');
 
 Route::get('/test-upload', function () {
     $url = Cloudinary::upload(public_path('test.jpg'), [

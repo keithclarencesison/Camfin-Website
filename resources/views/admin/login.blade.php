@@ -1,14 +1,4 @@
 <x-layouts.app>
-    @if ($errors->any())
-        <div style="color:red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="flex w-full h-screen shrink max-lg:flex-col">
 
         <div class="toast toast-top toast-start z-10">
@@ -35,10 +25,19 @@
         <div class="w-2/5 max-xl:w-1/2 max-lg:h-2/2 max-lg:w-full shrink">
             <form method="POST" action="{{ route('admin.login.submit', [], false) }}" class="w-full h-full flex justify-center items-center">
                 @csrf
-                    
+
                     <div class="form-container bg-base-200/50 w-[500px] h-[600px] rounded-2xl flex flex-col justify-center max-lg:h-[500px] max-md:mx-5 max-sm:h-[400px]">
                         <img src="/images/camfin-logo/camfin-logo.png" alt="" class="w-[200px] self-center max-sm:w-[100px]">
                         <p class="text-center font-bold mt-5">Login as a Admin User</p>
+                        @if ($errors->any())
+                            <div style="color:red;" class="self-center">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <label class="input validator self-center my-5 max-sm:w-3/4">
                             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5"fill="none"stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></g></svg>
                             <input type="email" name="email" required placeholder="Email" minlength="3" maxlength="30" title="Only letters, numbers or dash" class=""/>

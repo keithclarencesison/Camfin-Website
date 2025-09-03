@@ -81,4 +81,10 @@
         <p>No vehicles found.</p>
     @endif
 
+    @if($vehicles->hasPages())
+        <div class="mt-4 flex justify-center">
+            {{ $vehicles->links() }}
+        </div>
+    @endif
+
 </x-layouts.app>
