@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Blog;
 use App\Models\Vehicle;
+use App\Models\Loan;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\AssetPageController;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -40,10 +41,12 @@ Route::get('/check-env', function () {
 });
 
 Route::get('/loan/start', [LoanController::class, 'selectClientType'])->name('loan.start');
-Route::post('/loan/start', [LoanController::class, 'chooseClientType'])->name('loan.chooseType');
+Route::post('/loan/choose-client-type', [LoanController::class, 'chooseClientType'])->name('loan.chooseType');
 
 Route::get('/loan/apply/{client_type}', [LoanController::class, 'create'])->name('loan.create');
 Route::post('/loan/apply', [LoanController::class, 'store'])->name('loan.store');
+
+Route::get('/loan/success', [LoanController::class, 'success'])->name('loan.success');
 
 Route::get('/test-upload', function () {
     $url = Cloudinary::upload(public_path('test.jpg'), [
@@ -56,6 +59,8 @@ Route::get('/test-upload', function () {
 Route::get('/check-cloudinary', function() {
     dd(config('services.cloudinary'));
 });
+
+Route::get('/applications/{id}/export', [App\Http\Controllers\Admin\ApplicationController::class, 'export']);
 
 //ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -70,12 +75,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
             $vehicles = Vehicle::latest()->paginate(10)->appends(['tab' => 'vehicles']);
 
-            return view('admin.dashboard.index', compact('blogs', 'vehicles')); // ✅ This will render your Blade view    
+            $applications = Loan::latest()->paginate(10)->appends(['tab' => 'application']);
+
+            return view('admin.dashboard.index', compact('blogs', 'vehicles', 'applications')); // ✅ This will render your Blade view    
         })->name('dashboard');
 
         Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
 
         Route::resource('vehicles', App\Http\Controllers\Admin\VehicleController::class);
+
+        Route::resource('application', App\Http\Controllers\Admin\ApplicationController::class);
     });
 });
 

@@ -20,13 +20,13 @@ class LoanController extends Controller
             'suffix'        =>  'nullable|string|max:10',
             'date_of_birth' =>  'required|date',
             'mobile_number' =>  'required|string|max:15',
-            'email'         =>  'required|email|unique:loan,email',
+            'email'         =>  'required|email|unique:loans,email',
             'client_type'   =>  'required|in:Agent,Loan Applicant',
         ]);
 
         Loan::create($validate);
 
-        return redirect()->route('loan.create')->with('success', 'Your Loan application has been submitted!');
+        return redirect()->route('loan.success');
 
     }
 
@@ -41,5 +41,11 @@ class LoanController extends Controller
 
         return redirect()->route('loan.create', ['client_type' => $validated['client_type']]);
     }
+
+    public function success()
+    {
+        return view('pages.loan.success');
+    }
+
 
 }

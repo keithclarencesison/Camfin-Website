@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('mobile_number');
             $table->string('email')->unique();
-            $table->enum('client_type', ['Agent', 'Loan Application']);
+            $table->enum('client_type', ['Agent', 'Loan Applicant']);
             
 
             $table->timestamps();
