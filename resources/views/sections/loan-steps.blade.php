@@ -1,4 +1,4 @@
-<div class="flex justify-center flex-wrap shrink my-50 max-sm:my-20">
+<div class="flex justify-center flex-wrap shrink my-20 max-sm:my-20">
 
     <div class="loan-steps-container relative w-[80%] h-[700px] bg-[#D9D9D9]/40 rounded-lg max-sm:h-[600px]">
         <h1 class="text-center text-5xl font-bold text-[#538FD6] mt-20 mb-3 mx-5 max-lg:text-4xl max-md:text-3xl max-sm:text-2xl">Get Your Loan in 3 Easy Steps</h1>
@@ -8,9 +8,9 @@
 
             <div class="loan-steps max-md:basis-1/2 w-auto">
                 <ul class="steps steps-vertical w-full h-full mb-10 md:steps-horizontal max-md:m-0 max-sm:ml-3">
-                    <li class="step step-primary font-bold text-black/40 max-sm:text-[14px]" data-content="✓">Step 1:Apply Online</li>
-                    <li class="step step-primary font-bold text-black/40 max-sm:text-[14px]" data-content="✓">Step 2:Get Approved</li>
-                    <li class="step font-bold text-black/40 max-sm:text-[14px]">Step 3: Receive Fund</li>
+                    <li class="step step-primary font-bold text-black/40 max-sm:text-[14px]" data-content="✓">Step 1 : Apply Online</li>
+                    <li class="step step-primary font-bold text-black/40 max-sm:text-[14px]" data-content="✓">Step 2 : Get Approved</li>
+                    <li class="step font-bold text-black/40 max-sm:text-[14px]">Step 3 : Receive Fund</li>
                 </ul>
             </div>
         

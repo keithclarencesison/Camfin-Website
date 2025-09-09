@@ -16,8 +16,11 @@ class ApplicationController extends Controller
         return view('admin.application.index', compact('applications'));
     }
 
-    
-}
-
-
-
+    public function export(Loan $application)
+    {
+        return Excel::download(
+            new ApplicationExport($application), 
+            'loan_application_' . $application->id . '.xlsx'
+        );
+    }
+}   

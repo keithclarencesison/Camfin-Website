@@ -12,9 +12,9 @@
                     <p class="italic text-center w-3/4 self-center text-sm max-sm:text-[12px]">Find quick answers to common questions about loans, application steps, payment terms, and more.</p>
                 </div>
                 <div class="faqs-content flex flex-col w-1/2 items-center justify-center shrink max-lg:w-3/4 max-md:w-auto">
-                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[95%]">
+                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[90%]">
                         <input type="checkbox" />
-                        <div class="collapse-title font-semibold">I want to apply for a loan</div>
+                        <div class="collapse-title font-semibold max-sm:text-sm">I want to apply for a loan</div>
                         <div class="collapse-content text-sm">
                             is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                              when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -23,30 +23,30 @@
                                 versions of Lorem Ipsum.
                         </div>
                     </div>
-                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[95%]">
+                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[90%]">
                         <input type="checkbox" />
-                        <div class="collapse-title font-semibold">Where are you located</div>
+                        <div class="collapse-title font-semibold max-sm:text-sm">Where are you located</div>
                         <div class="collapse-content text-sm">
                             Click the "Sign Up" button in the top right corner and follow the registration process.
                         </div>
                     </div>
-                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[95%]">
+                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[90%]">
                         <input type="checkbox" />
-                        <div class="collapse-title font-semibold">What do you offer</div>
+                        <div class="collapse-title font-semibold max-sm:text-sm">What do you offer</div>
                         <div class="collapse-content text-sm">
                             Click the "Sign Up" button in the top right corner and follow the registration process.
                         </div>
                     </div>
-                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[95%]">
+                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[90%]">
                         <input type="checkbox" />
-                        <div class="collapse-title font-semibold">Can I have your contact information</div>
+                        <div class="collapse-title font-semibold max-sm:text-sm">Can I have your contact information</div>
                         <div class="collapse-content text-sm">
                             Click the "Sign Up" button in the top right corner and follow the registration process.
                         </div>
                     </div>
-                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[95%]">
+                    <div tabindex="0" class="collapse collapse-plus bg-base-100 border-base-300 border max-lg:w-[90%]">
                         <input type="checkbox" />
-                        <div class="collapse-title font-semibold">What are the requirements needed?</div>
+                        <div class="collapse-title font-semibold max-sm:text-sm">What are the requirements needed?</div>
                         <div class="collapse-content text-sm">
                             Click the "Sign Up" button in the top right corner and follow the registration process.
                         </div>

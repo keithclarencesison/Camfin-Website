@@ -27,39 +27,36 @@
                     <td>
                         <button 
                             class="btn btn-sm btn-primary"
-                            onclick='openApplicationModal(@json($applicationData))'>
+                            data-application="{{ json_encode([
+                                'id' => $application->id,
+                                'first_name' => $application->first_name,
+                                'middle_name' => $application->middle_name,
+                                'last_name' => $application->last_name,
+                                'suffix' => $application->suffix,
+                                'email' => $application->email,
+                                'mobile_number' => $application->mobile_number,
+                                'client_type' => $application->client_type,
+                                'date_of_birth' => $application->date_of_birth,
+                                'created_at' => $application->created_at->format('Y-m-d H:i')
+                            ]) }}"
+                            onclick="openApplicationModal(JSON.parse(this.dataset.application))">
                             View
                         </button>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="text-center">No applications found.</td>
+                    <td colspan="8" class="text-center">No applications found.</td>
                 </tr>
                 @endforelse
             </tbody>
         </table>
 
-        @php
-            $applicationData = [
-                "id" => $application->id,
-                "first_name" => $application->first_name,
-                "middle_name" => $application->middle_name,
-                "last_name" => $application->last_name,
-                "suffix" => $application->suffix,
-                "email" => $application->email,
-                "mobile_number" => $application->mobile_number,
-                "client_type" => $application->client_type,
-                "date_of_birth" => $application->date_of_birth,
-                "created_at" => $application->created_at->format("Y-m-d H:i"),
-            ];
-        @endphp
-
-
         <div class="mt-4">
             {{ $applications->links() }} <!-- Pagination links -->
         </div>
 
+        <!-- Modal -->
         <dialog id="applicationModal" class="modal">
             <div class="modal-box">
                 <h3 class="font-bold text-lg">Application Info</h3>
@@ -89,8 +86,6 @@
 
             exportBtn.href = `/admin/applications/${application.id}/export`;
 
-            // Open modal
-            // document.getElementById('applicationModal').checked = true;
             modal.showModal()
         }
 
@@ -98,10 +93,5 @@
             let modal = document.getElementById('applicationModal');
             modal.close();
         }
-
-    
     </script>
-
-
-    
 </x-layouts.app>

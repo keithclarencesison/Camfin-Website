@@ -9,6 +9,7 @@ use App\Models\Vehicle;
 use App\Models\Loan;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\AssetPageController;
+use App\Http\Controllers\Admin\ApplicationController;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use App\Http\Controllers\LoanController;
 
@@ -60,7 +61,7 @@ Route::get('/check-cloudinary', function() {
     dd(config('services.cloudinary'));
 });
 
-Route::get('/applications/{id}/export', [App\Http\Controllers\Admin\ApplicationController::class, 'export']);
+Route::get('/admin/applications/{application}/export', [ApplicationController::class, 'export'])->name('admin.applications.export');
 
 //ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {

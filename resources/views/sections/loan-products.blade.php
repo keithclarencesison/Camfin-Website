@@ -1,4 +1,4 @@
-<div class="flex justify-center flex-wrap shrink my-40">
+<div class="flex justify-center flex-wrap shrink my-30 max-sm:my-10">
 
     <div class="loan-products-header">
         <h1 class="text-6xl font-bold text-center max-xl:text-5xl max-md:text-4xl">Loan Services</h1>
@@ -15,7 +15,7 @@
                 <h2 class="card-title">Sangla OR/CR</h2>
                 <p>"Kailangan mo ba ng agarang cash pero ayaw mong iwan ang sasakyan mo?"</p>
                 <div class="justify-end card-actions">
-                    <button class="btn btn-primary"><a href="{{ route('loan-services', [], false) }}">Learn More</a></button>
+                    <a href="{{ route('loan-services', [], false) }}" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <h2 class="card-title">Second Hand Car/Truck Purchase</h2>
                 <p>"Magmaneho ng pangarap mong kotse o truck nang hindi nabubutas ang bulsa."</p>
                 <div class="justify-end card-actions">
-                    <button class="btn btn-primary"><a href="{{ route('loan-services', [], false) }}">Learn More</a></button>
+                    <a href="{{ route('loan-services', [], false) }}" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <h2 class="card-title">Sangla Titulo</h2>
                 <p>"Pera agad gamit ang titulo ng lupa o bahay mo."</p>
                 <div class="justify-end card-actions">
-                    <button class="btn btn-primary"><a href="{{ route('loan-services', [], false) }}">Learn More</a></button>
+                    <a href="{{ route('loan-services', [], false) }}" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
