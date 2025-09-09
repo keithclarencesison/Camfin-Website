@@ -27,7 +27,7 @@
                     <td>
                         <button 
                             class="btn btn-sm btn-primary"
-                            onclick="openApplicationModal(@json($application))">
+                            onclick='openApplicationModal(@json($applicationData))'>
                             View
                         </button>
                     </td>
@@ -40,23 +40,36 @@
             </tbody>
         </table>
 
+        @php
+            $applicationData = [
+                "id" => $application->id,
+                "first_name" => $application->first_name,
+                "middle_name" => $application->middle_name,
+                "last_name" => $application->last_name,
+                "suffix" => $application->suffix,
+                "email" => $application->email,
+                "mobile_number" => $application->mobile_number,
+                "client_type" => $application->client_type,
+                "date_of_birth" => $application->date_of_birth,
+                "created_at" => $application->created_at->format("Y-m-d H:i"),
+            ];
+        @endphp
+
+
         <div class="mt-4">
             {{ $applications->links() }} <!-- Pagination links -->
         </div>
 
-        <div id="applicationModal" class="modal">
-            <div class="modal-box w-11/12 max-w-2xl">
+        <dialog id="applicationModal" class="modal">
+            <div class="modal-box">
                 <h3 class="font-bold text-lg">Application Info</h3>
-                <div id="modalContent" class="py-4 space-y-2 max-h-96 overflow-y-auto">
-                    <!-- Filled dynamically -->
-                </div>
+                <div id="modalContent"></div>
                 <div class="modal-action">
                     <a id="exportBtn" href="#" class="btn btn-success">Export to Excel</a>
-                    <button class="btn" onclick="closeModal()">Close</button>
+                    <button onclick="closeModal()" class="btn">Close</button>
                 </div>
             </div>
-            <div class="modal-backdrop" onclick="closeModal()"></div>
-        </div>
+        </dialog>
     </div>
 
     <script>
@@ -78,20 +91,15 @@
 
             // Open modal
             // document.getElementById('applicationModal').checked = true;
-            modal.classList.add('modal-open');
+            modal.showModal()
         }
 
         function closeModal() {
             let modal = document.getElementById('applicationModal');
-            modal.classList.remove('modal-open');
+            modal.close();
         }
 
-        document.addEventListener('click', function(event) {
-            let modal = document.getElementById('applicationModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
+    
     </script>
 
 
