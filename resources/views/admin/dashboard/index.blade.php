@@ -32,9 +32,9 @@
                             <span class="sidebar-tab w-1/2 text-xl font-bold">Asset</span>
                         </a>
 
-                        <a role="tab" data-tab="application" class="tab p-0 hover:bg-white" data-tip="Foreclosed Asset">
+                        <a role="tab" data-tab="application" class="tab p-0 hover:bg-white" data-tip="Application">
                             <div class="image3 w-1/4 flex justify-center">
-                                <img src="/images/dashboard-sidebar-icon/asset.png" alt="" class="w-8">
+                                <img src="/images/dashboard-sidebar-icon/application.png" alt="" class="w-8">
                             </div>
                             <span class="sidebar-tab w-1/2 text-xl font-bold">Application</span>
                         </a>

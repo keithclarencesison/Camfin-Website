@@ -17,18 +17,18 @@
         </aside>
         <nav>
             <h6 class="footer-title">Site Map</h6>
-            <a class="link link-hover">Home</a>
-            <a class="link link-hover">About Us</a>
-            <a class="link link-hover">Help & Support</a>
-            <a class="link link-hover">Blog</a>
-            <a class="link link-hover">Contact Us</a>
-            <a class="link link-hover">Assets</a>
+            <a class="link link-hover" href="{{ url('/', [], false) }}">Home</a>
+            <a class="link link-hover" href="{{ route('about', [], false) }}">About Us</a>
+            <a class="link link-hover" href="{{ route('loan-services', [], false) }}">Loan Services</a>
+            <a class="link link-hover" href="/#help-support">Help & Support</a>
+            <a class="link link-hover" href="{{ route('blog.index') }}">Blog</a>
+            <a class="link link-hover" href="{{ route('assets.index') }}">Assets</a>
         </nav>
         <nav>
             <h6 class="footer-title">Branches</h6>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'head-office'], false) }}">Head Office</a>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'calasiao'], false) }}">Calasiao</a>
-            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'urdaneta'], false) }}">San Carlos</a>
+            <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'urdaneta'], false) }}">Urdaneta</a>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'san-carlos'], false) }}">San Carlos</a>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'la-trinidad'], false) }}">La Trinidad</a>
             <a class="link link-hover" href="{{ route('branches.show', ['branch' => 'isabela'], false) }}">Isabela</a>

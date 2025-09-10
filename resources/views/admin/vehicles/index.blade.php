@@ -38,9 +38,9 @@
                 <tbody>
                     @foreach($vehicles as $vehicle)
                         <tr class="text-center">
-                            <td class="">
+                            <td class="w-48 m-auto">
                                 @if($vehicle->main_image)
-                                    <img src="{{ $vehicle->main_image }}" alt="{{ $vehicle->title }}" class="w-24 h-24 object-cover mx-auto">
+                                    <img src="{{ $vehicle->main_image }}" alt="{{ $vehicle->title }}" class="w-full object-cover">
                                 @else
                                     <span>No image</span>
                                 @endif

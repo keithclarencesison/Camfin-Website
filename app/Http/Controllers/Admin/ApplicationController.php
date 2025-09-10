@@ -23,4 +23,15 @@ class ApplicationController extends Controller
             'loan_application_' . $application->id . '.xlsx'
         );
     }
+
+    public function destroy(Loan $application){
+        try{
+            $application->delete();
+
+            return redirect()->route('admin.dashboard', ['tab' => 'application'])->with('success', 'Blog post deleted successfully!');
+        } catch (\Exception $e){
+            return redirect()->route('admin.dashboard', ['tab' => 'application'])->with('success', 'Blog post deleted successfully!');
+        }
+    }
+
 }   
