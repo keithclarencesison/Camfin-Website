@@ -44,7 +44,7 @@
                 tabindex="0"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <li><a href="{{ route('about', [], false) }}">About</a></li>
-                <li><a href="/#loan-products-section">Loan Services</a></li>
+                <li><a href="{{ route('loan-services', [], false) }}">Loan Services</a></li>
                 <li>
                     <details>
                     <summary>Branches</summary>
@@ -59,9 +59,9 @@
                     </ul>
                     </details>
                 </li>
-                <li><a>Blog</a></li>
+                <li><a href="{{ route('blog.index') }}">Blog</a></li>
                 <li><a href="/#help-support">Help & Support</a></li>
-                <li><a>Assets</a></li>
+                <li><a href="{{ route('assets.index') }}">Assets</a></li>
             </ul>
         </div>
     </div>
