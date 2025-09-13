@@ -1,6 +1,7 @@
 <?php
 use App\Livewire\Index;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\DashboardController;
@@ -13,11 +14,9 @@ use App\Http\Controllers\Admin\ApplicationController;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use App\Http\Controllers\LoanController;
 
-// Route::get('/', function () {
-//     return view("welcome");
-// });
+// Route::get('/', Index::class);
 
-Route::get('/', Index::class);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', function(){
     return view('pages.about-us-page');
@@ -62,6 +61,10 @@ Route::get('/check-cloudinary', function() {
 });
 
 Route::get('/admin/applications/{application}/export', [ApplicationController::class, 'export'])->name('admin.applications.export');
+
+Route::get('/test-chatbot', function() {
+    return response()->json(['response' => 'Test successful!']);
+});
 
 //ADMIN
 Route::prefix('admin')->name('admin.')->group(function () {

@@ -1,5 +1,4 @@
 <x-layouts.app>
-
     <div class="overflow-x-hidden">
         @include('sections.navbar-section')
         @include('sections.welcome-carousel-page')
@@ -11,5 +10,4 @@
         @include('sections.help-support-center')
         @include('sections.footer-section')
     </div>
-    
 </x-layouts.app>
