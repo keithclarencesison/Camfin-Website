@@ -1,7 +1,15 @@
 <x-layouts.app>
     @include('sections.navbar-section')
-    <h1 class="text-center text-3xl font-bold my-8">Foreclosed Assets</h1>
-    @if(isset($vehicles) && $vehicles->count())
+    <div class="w-screen flex flex-col">
+        <div class="breadcrumbs self-center text-sm my-5">
+            <ul>
+                <li><a href="{{ url('/', [], false) }}">Home</a></li>
+                <li><a href="{{ route('assets.index') }}" class="text-gray-500">Assets</a></li>
+            </ul>
+        </div>
+        <h1 class="text-center text-3xl font-bold my-8">Foreclosed Assets</h1>
+    
+         @if(isset($vehicles) && $vehicles->count())
         <div class="w-screen flex justify-center">   
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
                 @foreach ($vehicles as $vehicle)
@@ -27,8 +35,10 @@
         </div>
         
 
-        <div class="mt-8 px-6">
-            {{ $vehicles->links() }}
-        </div>
-    @endif
+            <div class="mt-8 px-6">
+                {{ $vehicles->links() }}
+            </div>
+        @endif
+    </div>
+   
 </x-layouts.app>

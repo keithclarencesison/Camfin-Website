@@ -26,7 +26,13 @@ class BlogPageController extends Controller
     public function show($slug){
 
         $blog = Blog::where('slug', $slug)->firstOrFail();
-        return view('pages.blog.show', compact('blog'));
+
+        $relatedPosts = Blog::where('id', '!=', $blog->id)
+            ->latest()
+            ->take(3) // how many you want to show
+            ->get();
+
+        return view('pages.blog.show', compact('blog', 'relatedPosts'));
         
     }
     

@@ -78,7 +78,7 @@
             </table>
         </div>
     @else
-        <p>No Asset found.</p>
+        <p class="ml-10">No Asset found.</p>
     @endif
 
     @if($vehicles->hasPages())

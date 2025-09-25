@@ -25,7 +25,7 @@ class LoanController extends Controller
         ]);
 
         Loan::create($validate);
-
+            
         return redirect()->route('loan.success');
 
     }

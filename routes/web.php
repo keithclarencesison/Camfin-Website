@@ -22,7 +22,6 @@ Route::get('/about', function(){
     return view('pages.about-us-page');
 })->name('about');
 
-
 Route::get('/branches/{branch}', [BranchController::class, 'show'])->name('branches.show');
 
 Route::get('/blog', [BlogPageController::class, 'index'])->name('blog.index');
@@ -74,20 +73,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard/index', function (\Illuminate\Http\Request $request) {
-
             $blogs = Blog::latest()->paginate(10)->appends(['tab' => 'blog']);
-
             $vehicles = Vehicle::latest()->paginate(10)->appends(['tab' => 'vehicles']);
-
             $applications = Loan::latest()->paginate(10)->appends(['tab' => 'application']);
 
             return view('admin.dashboard.index', compact('blogs', 'vehicles', 'applications')); // ✅ This will render your Blade view    
         })->name('dashboard');
 
         Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
-
         Route::resource('vehicles', App\Http\Controllers\Admin\VehicleController::class);
-
         Route::resource('application', App\Http\Controllers\Admin\ApplicationController::class);
     });
 });

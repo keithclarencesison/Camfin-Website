@@ -5,8 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL; 
 use Illuminate\Support\Facades\Storage;
-use CloudinaryLabs\CloudinaryLaravel\CloudinaryAdapter;
-use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatbotController;
 
@@ -38,6 +36,6 @@ class AppServiceProvider extends ServiceProvider
             ->prefix('api')
             ->group(function ($router) {
                 $router->post('/chatbot', [ChatbotController::class, 'handleMessage'])->name('chatbot.handle');
-            });
+        });
     }
 }

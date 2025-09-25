@@ -33,5 +33,4 @@ class ApplicationController extends Controller
             return redirect()->route('admin.dashboard', ['tab' => 'application'])->with('success', 'Blog post deleted successfully!');
         }
     }
-
 }   

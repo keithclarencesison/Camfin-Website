@@ -14,9 +14,9 @@
         @stack('styles')
     </head>
     <body>
-        {{ $slot }}
-
         <x-chatbot />
+        {{ $slot }}
+        
         @livewireScripts
         @stack('scripts')
     </body>
