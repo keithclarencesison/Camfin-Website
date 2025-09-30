@@ -45,7 +45,7 @@
                             </li>
                         </ul>
                         <div class="mt-6">
-                        <button class="btn btn-primary btn-block">Inquire Now</button>
+                        <a href="{{ route('loan.start') }}" class="btn btn-primary btn-block">Apply Now</a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                             </li>
                         </ul>
                         <div class="mt-6">
-                            <button class="btn btn-primary btn-block">Inquire Now</button>
+                            <a href="{{ route('loan.start') }}" class="btn btn-primary btn-block">Apply Now</a>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                             </li>
                         </ul>
                         <div class="mt-6">
-                            <button class="btn btn-primary btn-block">Inquire Now</button>
+                            <a href="{{ route('loan.start') }}" class="btn btn-primary btn-block">Apply Now</a>
                         </div>
                     </div>
                 </div>
