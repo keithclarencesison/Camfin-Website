@@ -10,6 +10,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-gd": "*",
+        "ext-zip": "*",
         "cloudinary-labs/cloudinary-laravel": "^3.0",
         "cloudinary/cloudinary_php": "^3.1",
         "laravel/framework": "^12.0",
@@ -66,16 +68,7 @@
     "extra": {
         "laravel": {
             "dont-discover": []
-        },
-        "php": {
-            "extensions": [
-                "gd",
-                "pdo_mysql",
-                "mbstring",
-                "redis",
-                "zip"
-            ]
-        }
+        } 
     },
     "config": {
         "optimize-autoloader": true,
