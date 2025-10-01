@@ -7,7 +7,7 @@
         <div class="branches-info flex flex-col m-5">
             <h1 class="text-center text-5xl font-bold max-sm:text-3xl mb-10">{{ $branchData['name'] }}</h1>
             <h1 class="text-3xl font-bold max-sm:text-2xl">Where To Find Us</h1>
-            <p class="w-3/4 max-sm:w-full">📍 Business Address: <span class="italic text-[#538FD6] hover:underline"><a href="{{ $branchData['maps-address-link'] }}">{{ $branchData['business-address'] }}</a></span></p>
+            <p class="w-3/4 max-sm:w-full font-bold">📍 Business Address: <span class="italic text-[#538FD6] hover:underline"><a href="{{ $branchData['maps-address-link'] }}">{{ $branchData['business-address'] }}</a></span></p>
 
             <br>
 
