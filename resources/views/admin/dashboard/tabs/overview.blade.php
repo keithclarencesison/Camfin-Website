@@ -13,12 +13,14 @@
         <!-- Total Views Graph -->
         <div class="w-md">
             <h3 class="text-lg font-semibold mb-2">Total Views</h3>
+            <p class="text-2xl font-bold text-blue-600 mb-3">{{ $totalViews }}</p>
             <canvas id="totalViewsChart" height="20"></canvas>
         </div>
 
         <!-- Today's Views Graph -->
         <div class="w-md">
             <h3 class="text-lg font-semibold mb-2">Today's Views</h3>
+            <p class="text-2xl font-bold text-red-600 mb-3">{{ $todayViews }}</p>
             <canvas id="todayViewsChart" height="100"></canvas>
         </div>
 
@@ -36,7 +38,7 @@
             labels: ['Total Views'],
             datasets: [{
                 label: 'Total Views',
-                data: [],
+                data: [{{ $totalViews }}],
                 backgroundColor: ['rgba(54, 162, 235, 0.6)'],
                 borderColor: ['rgba(54, 162, 235, 1)'],
                 borderWidth: 1
@@ -56,7 +58,7 @@
             labels: ['Today'],
             datasets: [{
                 label: 'Today\'s Views',
-                data: [],
+                data: [{{ $todayViews }}],
                 backgroundColor: 'rgba(255, 99, 132, 0.6)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1

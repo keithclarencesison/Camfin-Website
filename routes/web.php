@@ -1,5 +1,7 @@
 <?php
 use App\Livewire\Index;
+use App\Models\Visit;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BranchController;
@@ -15,8 +17,10 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use App\Http\Controllers\LoanController;
 
 // Route::get('/', Index::class);
+Route::middleware(['track.visits'])->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+});
 
-Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', function(){
     return view('pages.about-us-page');
@@ -77,7 +81,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
             $vehicles = Vehicle::latest()->paginate(10)->appends(['tab' => 'vehicles']);
             $applications = Loan::latest()->paginate(10)->appends(['tab' => 'application']);
 
-            return view('admin.dashboard.index', compact('blogs', 'vehicles', 'applications')); // ✅ This will render your Blade view    
+            $totalViews = Visit::count();
+            $todayViews = Visit::whereDate('created_at', today())->count();
+
+            $visits = Visit::selectRaw('DATE(created_at) as date, COUNT(*) as views')
+            ->where('created_at', '>=', now()->subDays(7))
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
+            ->pluck('views', 'date');
+
+            $dates = $visits->keys();
+            $views = $visits->values();
+
+            return view('admin.dashboard.index', compact('blogs', 'vehicles', 'applications', 'totalViews', 
+            'todayViews', 'dates', 'views')); // ✅ This will render your Blade view    
         })->name('dashboard');
 
         Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
